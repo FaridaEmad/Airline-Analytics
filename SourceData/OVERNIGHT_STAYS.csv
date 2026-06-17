@@ -1,0 +1,113 @@
+STAY_ID,RESERVATION_ID,PASSENGER_ID,HOTEL_NAME,CITY,COUNTRY,CHECK_IN_DATE,CHECK_OUT_DATE,NIGHTS,ROOM_TYPE,NIGHTLY_RATE_USD,PAID_BY_AIRLINE
+1,3,5,Jumeirah Beach Hotel,Dubai,UAE,03-JAN-2024,05-JAN-2024,2,Deluxe,380,N
+2,9,25,The Savoy,London,UK,03-JAN-2024,04-JAN-2024,1,Standard,420,N
+3,12,14,The Peninsula,New York,USA,12-JAN-2024,14-JAN-2024,2,Suite,650,N
+4,22,43,Kempinski Nile,Cairo,Egypt,22-JAN-2024,23-JAN-2024,1,Standard,180,Y
+5,26,55,Burj Al Arab,Dubai,UAE,26-JAN-2024,28-JAN-2024,2,Suite,1800,N
+6,28,63,Movenpick Amman,Amman,Jordan,28-JAN-2024,29-JAN-2024,1,Standard,120,Y
+7,37,17,Conrad Tokyo,Tokyo,Japan,07-FEB-2024,09-FEB-2024,2,Deluxe,480,N
+8,41,29,Atlantis The Palm,Dubai,UAE,11-FEB-2024,13-FEB-2024,2,King Room,620,N
+9,47,41,Grand Hyatt,Frankfurt,Germany,17-FEB-2024,18-FEB-2024,1,Standard,220,Y
+10,52,7,The Ritz Carlton,Doha,Qatar,02-MAY-2024,04-MAY-2024,2,Deluxe,550,N
+11,56,22,Hotel de Crillon,Paris,France,22-FEB-2024,24-FEB-2024,2,Junior Suite,780,N
+12,57,27,Marina Bay Sands,Singapore,Singapore,23-FEB-2024,25-FEB-2024,2,Suite,900,N
+13,62,36,Grand Hyatt,Cairo,Egypt,28-FEB-2024,29-FEB-2024,1,Standard,160,Y
+14,76,64,Burj Khalifa Armani,Dubai,UAE,14-MAR-2024,16-MAR-2024,2,King Room,1200,N
+15,87,61,Four Seasons Doha,Doha,Qatar,25-MAR-2024,27-MAR-2024,2,Suite,750,N
+16,94,1,Park Hyatt Tokyo,Tokyo,Japan,01-APR-2024,03-APR-2024,2,Deluxe,520,N
+17,102,6,Raffles Dubai,Dubai,UAE,09-APR-2024,11-APR-2024,2,Suite,680,N
+18,110,22,SO Sofitel Bangkok,Bangkok,Thailand,17-APR-2024,18-APR-2024,1,Deluxe,280,N
+19,113,28,Mandarin Oriental,Hong Kong,China,20-APR-2024,22-APR-2024,2,Suite,950,N
+20,143,88,Four Seasons Riyadh,Riyadh,Saudi Arabia,20-MAY-2024,22-MAY-2024,2,King Room,480,N
+21,156,109,One Aldwych,London,UK,02-JUN-2024,04-JUN-2024,2,Suite,580,N
+22,157,111,Hotel Bayerischer Hof,Frankfurt,Germany,03-JUN-2024,05-JUN-2024,2,Deluxe,310,N
+23,159,115,Marriott Marquis,New York,USA,2024-06-09,06/16/2024,7,Airport Transit,412,n
+24,107,16,Wyndham Doha West Bay,Doha,Qatar,07-MAY-2024,2024-05-09,2,Standard,409,n
+25,117,36,Wyndham Doha West Bay,Doha,Qatar,17-MAY-2024,2024-05-18,1,Deluxe,272,N
+26,90,25,The Cumberland London,London,UK,04/20/2024,04/25/2024,5,Standard,235,N
+27,58,28,Hilton Midtown,New York,USA,08-MAR-2024,03/10/2024,2,Deluxe,154,N
+28,5,13,Frankfurt Grand Hotel,Frankfurt,Germany,2024-01-05,2024-01-07,2,Airport Transit,171,N
+29,132,66,Hilton Midtown,New York,USA,02-MAY-2024,04-MAY-2024,2,Deluxe,507,N
+30,66,44,Kuwait City Grand Hotel,Kuwait City,Kuwait,16-MAR-2024,03/21/2024,5,Standard,334,N
+31,151,99,Centro Olaya,Riyadh,Saudi Arabia,2024-06-01,2024-06-08,7,Suite,515,y
+32,32,3,The Cumberland London,London,UK,02/02/2024,2024-02-04,2,Suite,108,N
+33,42,31,Hyatt Grand Central,New York,USA,02/12/2024,17-FEB-2024,5,Airport Transit,479,N
+34,33,5,Mercure Paris Centre,Paris,France,2024-02-03,02/06/2024,3,Standard,304,N
+35,144,90,Tokyo Grand Hotel,Tokyo,Japan,2024-05-14,05/19/2024,5,Deluxe,196,N
+36,14,35,Marriott Marquis,New York,USA,01/14/2024,19-JAN-2024,5,Airport Transit,218,N
+37,1,1,Premier Inn Dubai Airport,Dubai,UAE,01/01/2024,2024-01-02,1,Deluxe,418,N
+38,97,13,Wyndham Grand Istanbul,Istanbul,Turkey,27-APR-2024,05/02/2024,5,Airport Transit,113,N
+39,125,52,Wyndham Doha West Bay,Doha,Qatar,06/05/2024,08-JUN-2024,3,Standard,420,N
+40,121,44,Hilton Riyadh,Riyadh,Saudi Arabia,2024-06-01,06/05/2024,4,Airport Transit,509,N
+41,95,5,Marriott Marquis,New York,USA,2024-04-25,04/29/2024,4,Deluxe,161,N
+42,81,9,Kuwait City Airport Hotel,Kuwait City,Kuwait,04/11/2024,04/14/2024,3,Standard,317,N
+43,44,35,Kuwait City Airport Hotel,Kuwait City,Kuwait,2024-02-14,2024-02-19,5,Suite,126,N
+44,17,8,Manama Grand Hotel,Manama,Bahrain,2024-01-17,01/22/2024,5,Airport Transit,512,N
+45,116,34,Rove Downtown,Dubai,UAE,16-MAY-2024,18-MAY-2024,2,Suite,440,N
+46,137,76,Oryx Airport Hotel,Doha,Qatar,05/07/2024,2024-05-08,1,Airport Transit,195,N
+47,106,14,Frankfurt Airport Hotel,Frankfurt,Germany,05/06/2024,05/08/2024,2,Deluxe,492,N
+48,35,11,Marmara Taksim,Istanbul,Turkey,02/05/2024,2024-02-08,3,Airport Transit,186,N
+49,127,56,The Tower Hotel,London,UK,2024-06-07,06/12/2024,5,Standard,142,N
+50,99,19,Kuwait City Grand Hotel,Kuwait City,Kuwait,2024-04-29,2024-05-02,3,Standard,320,n
+51,65,42,Wyndham Grand Istanbul,Istanbul,Turkey,15-MAR-2024,19-MAR-2024,4,Deluxe,98,N
+52,134,70,Singapore Grand Hotel,Singapore,Singapore,05/04/2024,05/07/2024,3,Standard,417,N
+53,155,107,Wyndham Doha West Bay,Doha,Qatar,06/05/2024,09-JUN-2024,4,Deluxe,330,Y
+54,2,3,The Tower Hotel,London,UK,01/02/2024,05-JAN-2024,3,Airport Transit,288,N
+55,48,43,City Centre Rotana,Doha,Qatar,2024-02-18,2024-02-19,1,Deluxe,97,N
+56,139,80,Hong Kong Airport Hotel,Hong Kong,China,05/09/2024,05/11/2024,2,Airport Transit,481,N
+57,27,59,Centro Olaya,Riyadh,Saudi Arabia,2024-01-27,30-JAN-2024,3,Suite,311,N
+58,50,47,Novotel Paris Gare,Paris,France,2024-02-20,2024-02-23,3,Airport Transit,411,N
+59,123,48,Marmara Taksim,Istanbul,Turkey,06/03/2024,2024-06-04,1,Deluxe,289,N
+60,153,103,Marmara Taksim,Istanbul,Turkey,06/03/2024,05-JUN-2024,2,Suite,503,N
+61,92,77,Mercure Paris Centre,Paris,France,2024-04-22,04/24/2024,2,Suite,367,N
+62,54,16,Novotel Paris Gare,Paris,France,2024-03-04,2024-03-08,4,Standard,388,n
+63,24,49,The Tower Hotel,London,UK,2024-01-24,26-JAN-2024,2,Deluxe,325,N
+64,36,13,Wyndham Doha West Bay,Doha,Qatar,02/06/2024,2024-02-09,3,Deluxe,205,N
+65,77,66,Marriott Marquis,New York,USA,04/07/2024,08-APR-2024,1,Deluxe,359,n
+66,60,32,Amman Airport Hotel,Amman,Jordan,2024-03-10,2024-03-13,3,Deluxe,263,N
+67,131,64,Rove Downtown,Dubai,UAE,05/01/2024,05/03/2024,2,Airport Transit,132,N
+68,61,34,City Centre Rotana,Doha,Qatar,03/11/2024,03/12/2024,1,Airport Transit,311,N
+69,4,9,Pullman Paris Tour Eiffel,Paris,France,04-JAN-2024,01/06/2024,2,Airport Transit,464,N
+70,120,42,Mercure Paris Centre,Paris,France,05/20/2024,22-MAY-2024,2,Standard,396,N
+71,49,45,Frankfurt Airport Hotel,Frankfurt,Germany,2024-02-19,20-FEB-2024,1,Standard,440,N
+72,51,4,Premier Inn Dubai Airport,Dubai,UAE,01-MAR-2024,2024-03-03,2,Standard,109,n
+73,55,20,Frankfurt Grand Hotel,Frankfurt,Germany,03/05/2024,08-MAR-2024,3,Suite,476,N
+74,118,38,Hilton Midtown,New York,USA,18-MAY-2024,2024-05-20,2,Deluxe,324,N
+75,30,77,Frankfurt Grand Hotel,Frankfurt,Germany,01/30/2024,01-FEB-2024,2,Deluxe,157,Y
+76,46,39,Marmara Taksim,Istanbul,Turkey,02/16/2024,2024-02-18,2,Suite,479,N
+77,6,17,Marmara Taksim,Istanbul,Turkey,2024-01-06,01/07/2024,1,Airport Transit,443,N
+78,133,68,Park Plaza Westminster,London,UK,03-MAY-2024,05/04/2024,1,Airport Transit,394,N
+79,10,45,Hilton Midtown,New York,USA,2024-01-10,01/13/2024,3,Deluxe,386,N
+80,64,40,Frankfurt Airport Hotel,Frankfurt,Germany,2024-03-14,21-MAR-2024,7,Airport Transit,292,N
+81,111,24,Marmara Taksim,Istanbul,Turkey,2024-05-11,05/15/2024,4,Airport Transit,129,N
+82,89,3,Premier Inn Dubai Airport,Dubai,UAE,19-APR-2024,22-APR-2024,3,Standard,383,N
+83,86,45,Tokyo Grand Hotel,Tokyo,Japan,16-APR-2024,2024-04-18,2,Standard,94,N
+84,135,72,Novotel Paris Gare,Paris,France,05/05/2024,06-MAY-2024,1,Deluxe,208,N
+85,84,19,Wyndham Grand Istanbul,Istanbul,Turkey,04/14/2024,04/15/2024,1,Deluxe,157,N
+86,79,1,Hyatt Grand Central,New York,USA,04/09/2024,04/13/2024,4,Standard,424,N
+87,150,102,Pullman Paris Tour Eiffel,Paris,France,05/20/2024,05/21/2024,1,Suite,252,N
+88,13,27,Singapore Grand Hotel,Singapore,Singapore,2024-01-13,17-JAN-2024,4,Standard,414,Y
+89,25,53,Hyatt Grand Central,New York,USA,25-JAN-2024,28-JAN-2024,3,Airport Transit,218,N
+90,146,94,Jumeirah Creekside Hotel,Dubai,UAE,05/16/2024,05/17/2024,1,Standard,480,N
+91,23,47,Radisson Blu Sisli,Istanbul,Turkey,23-JAN-2024,26-JAN-2024,3,Airport Transit,484,N
+92,129,60,Hyatt Grand Central,New York,USA,2024-06-09,2024-06-16,7,Suite,202,y
+93,124,50,Manama Airport Hotel,Manama,Bahrain,06/04/2024,05-JUN-2024,1,Deluxe,129,n
+94,98,17,Hilton Riyadh,Riyadh,Saudi Arabia,2024-04-28,2024-05-03,5,Suite,283,N
+95,100,45,Manama Grand Hotel,Manama,Bahrain,04/30/2024,03-MAY-2024,3,Standard,356,N
+96,82,13,Wyndham Doha West Bay,Doha,Qatar,2024-04-12,2024-04-15,3,Standard,407,N
+97,7,19,Rove Downtown,Dubai,UAE,01/07/2024,01/09/2024,2,Suite,281,N
+98,69,50,Mercure Paris Centre,Paris,France,2024-03-19,20-MAR-2024,1,Deluxe,99,N
+99,73,58,Marriott Marquis,New York,USA,03-APR-2024,04/08/2024,5,Deluxe,463,N
+100,101,2,Premier Inn Dubai Airport,Dubai,UAE,01-MAY-2024,2024-05-05,4,Suite,428,N
+101,103,8,The Tower Hotel,London,UK,03-MAY-2024,05-MAY-2024,2,Suite,216,N
+102,85,29,Amman Airport Hotel,Amman,Jordan,04/15/2024,17-APR-2024,2,Standard,183,Y
+103,109,20,Hong Kong Grand Hotel,Hong Kong,China,09-MAY-2024,2024-05-10,1,Suite,91,N
+104,74,60,Pullman Paris Tour Eiffel,Paris,France,2024-04-04,05-APR-2024,1,Suite,290,N
+105,72,56,The Cumberland London,London,UK,04/02/2024,04/05/2024,3,Suite,352,N
+106,114,30,Tokyo Airport Hotel,Tokyo,Japan,14-MAY-2024,05/18/2024,4,Standard,229,N
+107,108,18,Frankfurt Grand Hotel,Frankfurt,Germany,2024-05-08,05/15/2024,7,Suite,354,n
+108,158,113,Frankfurt Grand Hotel,Frankfurt,Germany,2024-06-08,06/13/2024,5,Standard,325,N
+109,34,9,Frankfurt Grand Hotel,Frankfurt,Germany,04-FEB-2024,07-FEB-2024,3,Standard,520,N
+110,29,65,Oryx Airport Hotel,Doha,Qatar,2024-01-29,30-JAN-2024,1,Standard,91,N
+111,112,26,Amman Grand Hotel,Amman,Jordan,2024-05-12,2024-05-14,2,Suite,236,N
+112,147,96,City Centre Rotana,Doha,Qatar,17-MAY-2024,19-MAY-2024,2,Suite,498,Y
