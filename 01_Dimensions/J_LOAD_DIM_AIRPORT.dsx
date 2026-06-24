@@ -1,0 +1,1913 @@
+BEGIN HEADER
+   CharacterSet "CP1252"
+   ExportingTool "IBM InfoSphere DataStage Export"
+   ToolVersion "8"
+   ServerName "IBMDSSERVER"
+   ToolInstanceID "ITI45"
+   MDISVersion "1.0"
+   Date "2026-06-25"
+   Time "00.47.01"
+   ServerVersion "9.1"
+END HEADER
+BEGIN DSJOB
+   Identifier "J_LOAD_DIM_AIRPORT"
+   DateModified "2026-06-25"
+   TimeModified "00.43.25"
+   BEGIN DSRECORD
+      Identifier "ROOT"
+      OLEType "CJobDefn"
+      Readonly "0"
+      Name "J_LOAD_DIM_AIRPORT"
+      NextID "1"
+      Container "V0"
+      JobVersion "56.0.0"
+      ControlAfterSubr "0"
+      Parameters "CParameters"
+      BEGIN DSSUBRECORD
+         Name "Airline_Auth"
+         Prompt "Airline_Auth parameters"
+         Default "(As pre-defined)"
+         ParamType "13"
+         ParamLength "0"
+         ParamScale "0"
+      END DSSUBRECORD
+      MetaBag "CMetaProperty"
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "AdvancedRuntimeOptions"
+         Value "#DSProjectARTOptions#"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "TraceMode"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "TraceSeq"
+         Value "1"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "TraceRecords"
+         Value "100"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "TraceSkip"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "TracePeriod"
+         Value "1"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "RecordJobPerformanceData"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "IdentList"
+         Value "Oracle_Connector_0|Oracle_Connector_1|Transformer_2|Remove_Duplicates_5"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "ClientCodePage"
+         Value "1252"
+      END DSSUBRECORD
+      NULLIndicatorPosition "0"
+      OrchestrateCode =+=+=+=
+#################################################################
+#### STAGE: Oracle_Connector_0
+## Operator
+pxbridge
+## Operator options
+-Orientation link
+-XMLProperties '<?xml version=\\'1.0\\' encoding=\\'UTF-16\\'?><Properties version=\\'1.1\\'><Common><Context type=\\'int\\'>1</Context><Variant type=\\'string\\'>11g</Variant><DescriptorVersion type=\\'string\\'>1.0</DescriptorVersion><PartitionType type=\\'int\\'>-1</PartitionType><RCP type=\\'int\\'>0</RCP></Common><Connection><Server modified=\\'1\\' type=\\'string\\'><![CDATA[[&"Airline_Auth.SERVER"]]]></Server><Username modified=\\'1\\' type=\\'string\\'><![CDATA[[&"Airline_Auth.USER"]]]></Username><Password modified=\\'1\\' type=\\'string\\'><![CDATA[[&"Airline_Auth.PASS"]]]></Password><OSLevelAuthentication type=\\'bool\\'><![CDATA[0]]></OSLevelAuthentication><Version modified=\\'1\\' type=\\'string\\'><![CDATA[11g]]></Version></Connection><Usage><ReadMode modified=\\'1\\' type=\\'int\\'><![CDATA[0]]></ReadMode><GenerateSQL modified=\\'1\\' type=\\'bool\\'><![CDATA[1]]></GenerateSQL><TableName modified=\\'1\\' type=\\'string\\'><![CDATA[HR.AIRPORTS]]><TableScope type=\\'int\\'><![CDATA[0]]></TableScope></TableName><EnableQuotedIDs type=\\'bool\\'><![CDATA[0]]></EnableQuotedIDs><SQL></SQL><EnablePartitionedReads collapsed=\\'1\\' type=\\'bool\\'><![CDATA[0]]></EnablePartitionedReads><Transaction><IsolationLevel type=\\'int\\'><![CDATA[0]]></IsolationLevel><RecordCount type=\\'int\\'><![CDATA[2000]]></RecordCount><EndOfWave type=\\'int\\'><![CDATA[0]]></EndOfWave></Transaction><Session><ArraySize type=\\'int\\'><![CDATA[2000]]></ArraySize><PrefetchRowCount type=\\'int\\'><![CDATA[1]]></PrefetchRowCount><PrefetchMemorySize type=\\'int\\'><![CDATA[0]]></PrefetchMemorySize><PassLobLocator collapsed=\\'1\\' type=\\'bool\\'><![CDATA[0]]></PassLobLocator><BFILEasBLOB type=\\'bool\\'><![CDATA[0]]></BFILEasBLOB><TreatWarningsAsErrors type=\\'bool\\'><![CDATA[0]]></TreatWarningsAsErrors><TreatFetchTruncateAsError type=\\'bool\\'><![CDATA[1]]></TreatFetchTruncateAsError></Session><BeforeAfter collapsed=\\'1\\' type=\\'bool\\'><![CDATA[0]]></BeforeAfter><ApplicationFailoverControl collapsed=\\'1\\' type=\\'bool\\'><![CDATA[0]]></ApplicationFailoverControl></Usage></Properties >'
+-connector '{
+   variant=\\'11g\\', 
+   library=ccora11g, 
+   version=1.0, 
+   variantlist=\\'V1;10:"10g":ccora10g;11:"11g":ccora11g\\', 
+   versionlist=\\'1.0,1.0\\', 
+   name=OracleConnector
+}'
+-source 0 '{
+      DSDescription={AIRPORT_ID=\\'AIRPORT_ID\\: nullable decimal\\[38\\,10\\]\\', IATA_CODE=\\'IATA_CODE\\: nullable string\\[max\\=3\\]\\', AIRPORT_NAME=\\'AIRPORT_NAME\\: nullable string\\[max\\=120\\]\\', CITY=\\'CITY\\: nullable string\\[max\\=80\\]\\', COUNTRY=\\'COUNTRY\\: nullable string\\[max\\=80\\]\\', TIMEZONE=\\'TIMEZONE\\: nullable string\\[max\\=80\\]\\', TERMINAL_COUNT=\\'TERMINAL_COUNT\\: nullable decimal\\[38\\,10\\]\\'}, 
+      DSIsKey={AIRPORT_ID=1}, 
+      DSSQLType={AIRPORT_ID=4, IATA_CODE=12, AIRPORT_NAME=12, CITY=12, COUNTRY=12, TIMEZONE=12, TERMINAL_COUNT=2}, 
+      DSSQLPrecision={AIRPORT_ID=38, IATA_CODE=3, AIRPORT_NAME=120, CITY=80, COUNTRY=80, TIMEZONE=80, TERMINAL_COUNT=38}, 
+      DSSQLScale={AIRPORT_ID=10, TERMINAL_COUNT=10}, 
+      DSSchema=\\'record
+         (
+           AIRPORT_ID\\:nullable int32\\;
+           IATA_CODE\\:nullable ustring\\[max\\=3\\]\\;
+           AIRPORT_NAME\\:nullable ustring\\[max\\=120\\]\\;
+           CITY\\:nullable ustring\\[max\\=80\\]\\;
+           COUNTRY\\:nullable ustring\\[max\\=80\\]\\;
+           TIMEZONE\\:nullable ustring\\[max\\=80\\]\\;
+           TERMINAL_COUNT\\:nullable decimal\\[38\\,10\\]\\;
+         )\\'
+}'
+   
+
+## General options
+[ident('Oracle_Connector_0'); jobmon_ident('Oracle_Connector_0')]
+## Outputs
+0> [modify (
+  AIRPORT_ID:nullable int32=AIRPORT_ID;
+  IATA_CODE:nullable ustring[max=3]=IATA_CODE;
+  AIRPORT_NAME:nullable ustring[max=120]=AIRPORT_NAME;
+  CITY:nullable ustring[max=80]=CITY;
+  COUNTRY:nullable ustring[max=80]=COUNTRY;
+  TIMEZONE:nullable ustring[max=80]=TIMEZONE;
+  TERMINAL_COUNT:nullable decimal[38,10]=TERMINAL_COUNT;
+keep
+  AIRPORT_ID,IATA_CODE,AIRPORT_NAME,CITY,
+  COUNTRY,TIMEZONE,TERMINAL_COUNT;
+)] 'Oracle_Connector_0:DSLink3.v'
+;
+
+#################################################################
+#### STAGE: Oracle_Connector_1
+## Operator
+pxbridge
+## Operator options
+-Orientation link
+-XMLProperties '<?xml version=\\'1.0\\' encoding=\\'UTF-16\\'?><Properties version=\\'1.1\\'><Common><Context type=\\'int\\'>2</Context><Variant type=\\'string\\'>11g</Variant><DescriptorVersion type=\\'string\\'>1.0</DescriptorVersion><PartitionType type=\\'int\\'>-1</PartitionType><RCP type=\\'int\\'>0</RCP></Common><Connection><Server modified=\\'1\\' type=\\'string\\'><![CDATA[[&"Airline_Auth.SERVER"]]]></Server><Username modified=\\'1\\' type=\\'string\\'><![CDATA[[&"Airline_Auth.USER"]]]></Username><Password modified=\\'1\\' type=\\'string\\'><![CDATA[[&"Airline_Auth.PASS"]]]></Password><OSLevelAuthentication type=\\'bool\\'><![CDATA[0]]></OSLevelAuthentication><Version modified=\\'1\\' type=\\'string\\'><![CDATA[11g]]></Version></Connection><Usage><WriteMode modified=\\'1\\' type=\\'int\\'><![CDATA[4]]></WriteMode><GenerateSQL modified=\\'1\\' type=\\'bool\\'><![CDATA[1]]></GenerateSQL><TableName collapsed=\\'1\\' modified=\\'1\\' type=\\'string\\'><![CDATA[HR.DIM_AIRPORT]]><TableScope type=\\'int\\'><![CDATA[0]]></TableScope></TableName><EnableQuotedIDs type=\\'bool\\'><![CDATA[0]]></EnableQuotedIDs><SQL collapsed=\\'1\\'></SQL><TableAction collapsed=\\'1\\' modified=\\'1\\' type=\\'int\\'><![CDATA[0]]></TableAction><Transaction><IsolationLevel type=\\'int\\'><![CDATA[0]]></IsolationLevel><RecordCount type=\\'int\\'><![CDATA[2000]]></RecordCount></Transaction><Session><ArraySize type=\\'int\\'><![CDATA[2000]]></ArraySize><DropUnmatchedFields type=\\'bool\\'><![CDATA[0]]></DropUnmatchedFields><TreatWarningsAsErrors type=\\'bool\\'><![CDATA[0]]></TreatWarningsAsErrors><PreserveTrailingBlanks type=\\'bool\\'><![CDATA[1]]></PreserveTrailingBlanks><FailOnRowErrorPX type=\\'bool\\'><![CDATA[1]]></FailOnRowErrorPX></Session><Logging><LogColumnValues collapsed=\\'1\\' type=\\'bool\\'><![CDATA[0]]></LogColumnValues></Logging><BeforeAfter collapsed=\\'1\\' type=\\'bool\\'><![CDATA[0]]></BeforeAfter><ApplicationFailoverControl collapsed=\\'1\\' type=\\'bool\\'><![CDATA[0]]></ApplicationFailoverControl><Reconnect collapsed=\\'1\\' type=\\'bool\\'><![CDATA[0]]></Reconnect><Disconnect collapsed=\\'1\\' type=\\'int\\'><![CDATA[0]]></Disconnect></Usage></Properties >'
+-connector '{
+   variant=\\'11g\\', 
+   library=ccora11g, 
+   version=1.0, 
+   variantlist=\\'V1;10:"10g":ccora10g;11:"11g":ccora11g\\', 
+   versionlist=\\'1.0,1.0\\', 
+   name=OracleConnector
+}'
+-target 0 '{
+      DSDescription={AIRPORT_ID=\\'AIRPORT_ID\\: decimal\\[38\\,10\\]\\', IATA_CODE=\\'IATA_CODE\\: string\\[max\\=3\\]\\', AIRPORT_NAME=\\'AIRPORT_NAME\\: string\\[max\\=120\\]\\', CITY=\\'CITY\\: string\\[max\\=80\\]\\', COUNTRY=\\'COUNTRY\\: string\\[max\\=80\\]\\', TIMEZONE=\\'TIMEZONE\\: nullable string\\[max\\=80\\]\\', TERMINAL_COUNT=\\'TERMINAL_COUNT\\: nullable decimal\\[38\\,10\\]\\'}, 
+      DSIsKey={AIRPORT_ID=1}, 
+      DSSQLType={AIRPORT_ID=4, IATA_CODE=12, AIRPORT_NAME=12, CITY=12, COUNTRY=12, TIMEZONE=12, TERMINAL_COUNT=2}, 
+      DSDerivation={AIRPORT_ID=\\'DSLink4\\.AIRPORT_ID\\', IATA_CODE=\\'DSLink4\\.IATA_CODE\\', AIRPORT_NAME=\\'DSLink4\\.AIRPORT_NAME\\', CITY=\\'DSLink4\\.CITY\\', COUNTRY=\\'DSLink4\\.COUNTRY\\', TIMEZONE=\\'DSLink4\\.TIMEZONE\\', TERMINAL_COUNT=\\'DSLink4\\.TERMINAL_COUNT\\'}, 
+      DSSQLPrecision={AIRPORT_ID=38, IATA_CODE=3, AIRPORT_NAME=120, CITY=80, COUNTRY=80, TIMEZONE=80, TERMINAL_COUNT=38}, 
+      DSSQLScale={AIRPORT_ID=10, TERMINAL_COUNT=10}, 
+      DSSchema=\\'record
+         (
+           AIRPORT_ID\\:int32\\;
+           IATA_CODE\\:ustring\\[max\\=3\\]\\;
+           AIRPORT_NAME\\:ustring\\[max\\=120\\]\\;
+           CITY\\:ustring\\[max\\=80\\]\\;
+           COUNTRY\\:ustring\\[max\\=80\\]\\;
+           TIMEZONE\\:nullable ustring\\[max\\=80\\]\\;
+           TERMINAL_COUNT\\:nullable decimal\\[38\\,10\\]\\;
+         )\\'
+}'
+   
+
+## General options
+[ident('Oracle_Connector_1'); jobmon_ident('Oracle_Connector_1')]
+## Inputs
+0< [] 'Remove_Duplicates_5:DSLink6.v'
+;
+
+#################################################################
+#### STAGE: Transformer_2
+## Operator
+transform
+## Operator options
+-flag run
+-name 'V0S2_J_LOAD_DIM_AIRPORT_Transformer_2'
+
+## General options
+[ident('Transformer_2'); jobmon_ident('Transformer_2')]
+## Inputs
+0< [] 'Oracle_Connector_0:DSLink3.v'
+## Outputs
+0> [] 'Transformer_2:DSLink4.v'
+;
+
+#################################################################
+#### STAGE: Remove_Duplicates_5
+## Operator
+remdup
+## Operator options
+-keep first
+-key 'AIRPORT_ID'
+
+## General options
+[ident('Remove_Duplicates_5'); jobmon_ident('Remove_Duplicates_5')]
+## Inputs
+0< [] 'Transformer_2:DSLink4.v'
+## Outputs
+0> [modify (
+keep
+  AIRPORT_ID,IATA_CODE,AIRPORT_NAME,CITY,
+  COUNTRY,TIMEZONE,TERMINAL_COUNT;
+)] 'Remove_Duplicates_5:DSLink6.v'
+;
+
+
+=+=+=+=
+      IsTemplate "0"
+      NLSLocale ",,,,"
+      JobType "3"
+      Category "\\Jobs\\Airline_Analystics\\01_DIMENSIONS"
+      CenturyBreakYear "30"
+      NextAliasID "2"
+      ParameterFileDDName "DD00001"
+      ReservedWordCheck "1"
+      TransactionSize "0"
+      ValidationStatus "0"
+      Uploadable "0"
+      PgmCustomizationFlag "0"
+      JobReportFlag "0"
+      AllowMultipleInvocations "0"
+      Act2ActOverideDefaults "0"
+      Act2ActEnableRowBuffer "0"
+      Act2ActUseIPC "0"
+      Act2ActBufferSize "0"
+      Act2ActIPCTimeout "0"
+      ExpressionSemanticCheckFlag "0"
+      TraceOption "0"
+      EnableCacheSharing "0"
+      RuntimeColumnPropagation "0"
+      RelStagesInJobStatus "-1"
+      WebServiceEnabled "0"
+      MFProcessMetaData "0"
+      MFProcessMetaDataXMLFileExchangeMethod "0"
+      IMSProgType "0"
+      CopyLibPrefix "ARDT"
+      RecordPerformanceResults "0"
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "V0"
+      OLEType "CContainerView"
+      Readonly "0"
+      Name "Job"
+      NextID "1"
+      IsTopLevel "0"
+      StageList "V0S0|V0S1|V0S2|V0S5"
+      StageXPos "288|960|552|696"
+      StageYPos "96|96|96|96"
+      StageTypes "CCustomStage.CC_GUI|CCustomStage.CC_GUI|CTransformerStage|CCustomStage"
+      NextStageID "7"
+      SnapToGrid "1"
+      GridLines "0"
+      ZoomValue "100"
+      StageXSize "48|48|48|48"
+      StageYSize "48|48|48|48"
+      ContainerViewSizing "0132 0132 0465 0490 0000 0001 0143 0000"
+      StageNames "Oracle_Connector_0|Oracle_Connector_1|Transformer_2|Remove_Duplicates_5"
+      StageTypeIDs "OracleConnectorPX|OracleConnectorPX|CTransformerStage|PxRemDup"
+      LinkNames "DSLink3| |DSLink4|DSLink6"
+      LinkHasMetaDatas "True| |True|True"
+      LinkTypes "1| |1|1"
+      LinkNamePositionXs "444| |648|800"
+      LinkNamePositionYs "120| |120|120"
+      TargetStageIDs "V0S2| |V0S5|V0S1"
+      SourceStageEffectiveExecutionModes "2| |2|2"
+      SourceStageRuntimeExecutionModes "2| |2|2"
+      TargetStageEffectiveExecutionModes "2| |2|2"
+      TargetStageRuntimeExecutionModes "2| |2|2"
+      LinkIsSingleOperatorLookup "False| |False|False"
+      LinkIsSortSequential "False| |False|False"
+      LinkSortMode "0| |0|0"
+      LinkPartColMode "1| |1|1"
+      LinkSourcePinIDs "V0S0P1| |V0S2P2|V0S5P1"
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "V0S0"
+      OLEType "CCustomStage"
+      Readonly "0"
+      Name "Oracle_Connector_0"
+      NextID "2"
+      OutputPins "V0S0P1"
+      StageType "OracleConnectorPX"
+      AllowColumnMapping "0"
+      Properties "CCustomProperty"
+      BEGIN DSSUBRECORD
+         Name "VariantName"
+         Value "11g"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "VariantLibrary"
+         Value "ccora11g"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "VariantVersion"
+         Value "1.0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "SupportedVariants"
+         Value "V1;10:\"10g\":ccora10g;11:\"11g\":ccora11g"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "SupportedVariantsLibraries"
+         Value "ccora10g,ccora11g"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "SupportedVariantsVersions"
+         Value "1.0,1.0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Orientation"
+         Value "link"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectFromLink"
+         Value "-1"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectThreshold"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectNumber"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectUsesPercentage"
+         Value "false"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "ConnectorName"
+         Value "OracleConnector"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Engine"
+         Value "EE"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Context"
+         Value "source"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "ConnectionString"
+         Value "/Connection/Server"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Username"
+         Value "/Connection/Username"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Password"
+         Value "/Connection/Password"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "xaoDbName"
+         Value "/Connection/xaoDbName"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "OSLevelAuthentication"
+         Value "/Connection/OSLevelAuthentication"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "XMLProperties"
+         Value "<?xml version='1.0' encoding='UTF-16'?><Properties version='1.1'><Common><Context type='int'>1</Context><Variant type='string'>11g</Variant><DescriptorVersion type='string'>1.0</DescriptorVersion><PartitionType type='int'>-1</PartitionType><RCP type='int'>0</RCP></Common><Connection><Server modified='1' type='string'><![CDATA[#Airline_Auth.SERVER#]]></Server><Username modified='1' type='string'><![CDATA[#Airline_Auth.USER#]]></Username><Password modified='1' type='string'><![CDATA[#Airline_Auth.PASS#]]></Password><OSLevelAuthentication type='bool'><![CDATA[0]]></OSLevelAuthentication><Version modified='1' type='string'><![CDATA[11g]]></Version></Connection><Usage><ReadMode modified='1' type='int'><![CDATA[0]]></ReadMode><GenerateSQL modified='1' type='bool'><![CDATA[1]]></GenerateSQL><TableName modified='1' type='string'><![CDATA[HR.AIRPORTS]]><TableScope type='int'><![CDATA[0]]></TableScope></TableName><EnableQuotedIDs type='bool'><![CDATA[0]]></EnableQuotedIDs><SQL></SQL><EnablePartitionedReads collapsed='1' type='bool'><![CDATA[0]]></EnablePartitionedReads><Transaction><IsolationLevel type='int'><![CDATA[0]]></IsolationLevel><RecordCount type='int'><![CDATA[2000]]></RecordCount><EndOfWave type='int'><![CDATA[0]]></EndOfWave></Transaction><Session><ArraySize type='int'><![CDATA[2000]]></ArraySize><PrefetchRowCount type='int'><![CDATA[1]]></PrefetchRowCount><PrefetchMemorySize type='int'><![CDATA[0]]></PrefetchMemorySize><PassLobLocator collapsed='1' type='bool'><![CDATA[0]]></PassLobLocator><BFILEasBLOB type='bool'><![CDATA[0]]></BFILEasBLOB><TreatWarningsAsErrors type='bool'><![CDATA[0]]></TreatWarningsAsErrors><TreatFetchTruncateAsError type='bool'><![CDATA[1]]></TreatFetchTruncateAsError></Session><BeforeAfter collapsed='1' type='bool'><![CDATA[0]]></BeforeAfter><ApplicationFailoverControl collapsed='1' type='bool'><![CDATA[0]]></ApplicationFailoverControl></Usage></Properties >"
+      END DSSUBRECORD
+      NextRecordID "0"
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "V0S0P1"
+      OLEType "CCustomOutput"
+      Readonly "0"
+      Name "DSLink3"
+      Partner "V0S2|V0S2P1"
+      Properties "CCustomProperty"
+      BEGIN DSSUBRECORD
+         Name "lookup\\type"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "VariantName"
+         Value "10"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "VariantLibrary"
+         Value "ccora10g"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "VariantVersion"
+         Value "1.0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectFromLink"
+         Value "-1"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectThreshold"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectNumber"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectUsesPercentage"
+         Value "false"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "ConnectorName"
+         Value "OracleConnector"
+      END DSSUBRECORD
+      Columns "COutputColumn"
+      BEGIN DSSUBRECORD
+         Name "AIRPORT_ID"
+         Description "AIRPORT_ID: nullable decimal[38,10]"
+         SqlType "4"
+         Precision "38"
+         Scale "10"
+         Nullable "1"
+         KeyPosition "1"
+         DisplaySize "0"
+         Group "0"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\HR_AIRPORTS"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         Usage "COMP-3"
+         PadChar ""
+         ColumnReference "AIRPORT_ID"
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "IATA_CODE"
+         Description "IATA_CODE: nullable string[max=3]"
+         SqlType "12"
+         Precision "3"
+         Scale "0"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         Group "0"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\HR_AIRPORTS"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ColumnReference "IATA_CODE"
+         ExtendedPrecision "1"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "AIRPORT_NAME"
+         Description "AIRPORT_NAME: nullable string[max=120]"
+         SqlType "12"
+         Precision "120"
+         Scale "0"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         Group "0"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\HR_AIRPORTS"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ColumnReference "AIRPORT_NAME"
+         ExtendedPrecision "1"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "CITY"
+         Description "CITY: nullable string[max=80]"
+         SqlType "12"
+         Precision "80"
+         Scale "0"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         Group "0"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\HR_AIRPORTS"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ColumnReference "CITY"
+         ExtendedPrecision "1"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "COUNTRY"
+         Description "COUNTRY: nullable string[max=80]"
+         SqlType "12"
+         Precision "80"
+         Scale "0"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         Group "0"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\HR_AIRPORTS"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ColumnReference "COUNTRY"
+         ExtendedPrecision "1"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "TIMEZONE"
+         Description "TIMEZONE: nullable string[max=80]"
+         SqlType "12"
+         Precision "80"
+         Scale "0"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         Group "0"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\HR_AIRPORTS"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ColumnReference "TIMEZONE"
+         ExtendedPrecision "1"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "TERMINAL_COUNT"
+         Description "TERMINAL_COUNT: nullable decimal[38,10]"
+         SqlType "2"
+         Precision "38"
+         Scale "10"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         Group "0"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\HR_AIRPORTS"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         Usage "COMP-3"
+         PadChar ""
+         ColumnReference "TERMINAL_COUNT"
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      MetaBag "CMetaProperty"
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "DiskWriteInc"
+         Value "1048576"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "BufFreeRun"
+         Value "50"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "MaxMemBufSize"
+         Value "3145728"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "QueueUpperSize"
+         Value "0"
+      END DSSUBRECORD
+      LeftTextPos "444"
+      TopTextPos "120"
+      LinkMinimised "0"
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "V0S1"
+      OLEType "CCustomStage"
+      Readonly "0"
+      Name "Oracle_Connector_1"
+      NextID "3"
+      InputPins "V0S1P2"
+      StageType "OracleConnectorPX"
+      AllowColumnMapping "0"
+      Properties "CCustomProperty"
+      BEGIN DSSUBRECORD
+         Name "VariantName"
+         Value "11g"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "VariantLibrary"
+         Value "ccora11g"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "VariantVersion"
+         Value "1.0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "SupportedVariants"
+         Value "V1;10:\"10g\":ccora10g;11:\"11g\":ccora11g"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "SupportedVariantsLibraries"
+         Value "ccora10g,ccora11g"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "SupportedVariantsVersions"
+         Value "1.0,1.0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Orientation"
+         Value "link"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectFromLink"
+         Value "-1"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectThreshold"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectNumber"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectUsesPercentage"
+         Value "false"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "ConnectorName"
+         Value "OracleConnector"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Engine"
+         Value "EE"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Context"
+         Value "target"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "ConnectionString"
+         Value "/Connection/Server"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Username"
+         Value "/Connection/Username"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Password"
+         Value "/Connection/Password"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "xaoDbName"
+         Value "/Connection/xaoDbName"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "OSLevelAuthentication"
+         Value "/Connection/OSLevelAuthentication"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "XMLProperties"
+         Value "<?xml version='1.0' encoding='UTF-16'?><Properties version='1.1'><Common><Context type='int'>2</Context><Variant type='string'>11g</Variant><DescriptorVersion type='string'>1.0</DescriptorVersion><PartitionType type='int'>-1</PartitionType><RCP type='int'>0</RCP></Common><Connection><Server modified='1' type='string'><![CDATA[#Airline_Auth.SERVER#]]></Server><Username modified='1' type='string'><![CDATA[#Airline_Auth.USER#]]></Username><Password modified='1' type='string'><![CDATA[#Airline_Auth.PASS#]]></Password><OSLevelAuthentication type='bool'><![CDATA[0]]></OSLevelAuthentication><Version modified='1' type='string'><![CDATA[11g]]></Version></Connection><Usage><WriteMode modified='1' type='int'><![CDATA[4]]></WriteMode><GenerateSQL modified='1' type='bool'><![CDATA[1]]></GenerateSQL><TableName collapsed='1' modified='1' type='string'><![CDATA[HR.DIM_AIRPORT]]><TableScope type='int'><![CDATA[0]]></TableScope></TableName><EnableQuotedIDs type='bool'><![CDATA[0]]></EnableQuotedIDs><SQL collapsed='1'></SQL><TableAction collapsed='1' modified='1' type='int'><![CDATA[0]]></TableAction><Transaction><IsolationLevel type='int'><![CDATA[0]]></IsolationLevel><RecordCount type='int'><![CDATA[2000]]></RecordCount></Transaction><Session><ArraySize type='int'><![CDATA[2000]]></ArraySize><DropUnmatchedFields type='bool'><![CDATA[0]]></DropUnmatchedFields><TreatWarningsAsErrors type='bool'><![CDATA[0]]></TreatWarningsAsErrors><PreserveTrailingBlanks type='bool'><![CDATA[1]]></PreserveTrailingBlanks><FailOnRowErrorPX type='bool'><![CDATA[1]]></FailOnRowErrorPX></Session><Logging><LogColumnValues collapsed='1' type='bool'><![CDATA[0]]></LogColumnValues></Logging><BeforeAfter collapsed='1' type='bool'><![CDATA[0]]></BeforeAfter><ApplicationFailoverControl collapsed='1' type='bool'><![CDATA[0]]></ApplicationFailoverControl><Reconnect collapsed='1' type='bool'><![CDATA[0]]></Reconnect><Disconnect collapsed='1' type='int'><![CDATA[0]]></Disconnect></Usage></Properties >"
+      END DSSUBRECORD
+      NextRecordID "0"
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "V0S1P2"
+      OLEType "CCustomInput"
+      Readonly "0"
+      Name "DSLink6"
+      Partner "V0S5|V0S5P1"
+      LinkType "1"
+      ConditionNotMet "fail"
+      LookupFail "fail"
+      Properties "CCustomProperty"
+      BEGIN DSSUBRECORD
+         Name "VariantName"
+         Value "10"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "VariantLibrary"
+         Value "ccora10g"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "VariantVersion"
+         Value "1.0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectFromLink"
+         Value "-1"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectThreshold"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectNumber"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectUsesPercentage"
+         Value "false"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "ConnectorName"
+         Value "OracleConnector"
+      END DSSUBRECORD
+      MetaBag "CMetaProperty"
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "RTColumnProp"
+         Value "0"
+      END DSSUBRECORD
+      TransactionSize "0"
+      TXNBehaviour "0"
+      EnableTxGroup "0"
+      LinkMinimised "0"
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "V0S2"
+      OLEType "CTransformerStage"
+      Readonly "0"
+      Name "Transformer_2"
+      NextID "3"
+      InputPins "V0S2P1"
+      OutputPins "V0S2P2"
+      MetaBag "CMetaProperty"
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "TrxGenCode"
+         Value =+=+=+=
+//
+// Generated file to implement the V0S2_J_LOAD_DIM_AIRPORT_Transformer_2 transform operator.
+//
+
+// define our input/output link names
+inputname 0 DSLink3;
+outputname 0 DSLink4;
+
+initialize {
+	// define our control variables
+	int8 RowRejected0;
+	int8 NullSetVar0;
+
+	// declare our intermediate variables for this section
+	string InterVar0_0;
+	string InterVar0_1;
+
+	// initialise constant values which require conversion
+	InterVar0_0 = "";
+	InterVar0_1 = 0;
+	// Stage variable declaration and initialisation
+	string StageVar0_vIATA;
+	StageVar0_vIATA = InterVar0_0;
+	string StageVar0_vName;
+	StageVar0_vName = InterVar0_0;
+	string StageVar0_vCity;
+	StageVar0_vCity = InterVar0_0;
+	string StageVar0_vCountry;
+	StageVar0_vCountry = InterVar0_0;
+	string StageVar0_vTerminal;
+	StageVar0_vTerminal = InterVar0_1;
+}
+
+mainloop {
+
+	// declare our intermediate variables for this section
+	string InterVar0_2;
+
+	// evaluate the stage variables first
+	StageVar0_vIATA = u_upper_case(u_trimc_string(DSLink3.IATA_CODE));
+	StageVar0_vName = u_upper_case(u_trimc_string(DSLink3.AIRPORT_NAME));
+	StageVar0_vCity = u_upper_case(u_trimc_string(DSLink3.CITY));
+	StageVar0_vCountry = u_upper_case(u_trimc_string(DSLink3.COUNTRY));
+	if (null(DSLink3.TERMINAL_COUNT)) {
+		StageVar0_vTerminal = InterVar0_1;
+	} else {
+		InterVar0_2 = DSLink3.TERMINAL_COUNT;
+		StageVar0_vTerminal = InterVar0_2;
+	}
+	//;
+
+	// initialise the rejected row variable
+	RowRejected0 = 1;
+
+	// evaluate columns (no constraints) for link: DSLink4
+	DSLink4.AIRPORT_ID = DSLink3.AIRPORT_ID;
+	DSLink4.IATA_CODE = StageVar0_vIATA;
+	DSLink4.AIRPORT_NAME = StageVar0_vName;
+	DSLink4.CITY = StageVar0_vCity;
+	DSLink4.COUNTRY = StageVar0_vCountry;
+	DSLink4.TERMINAL_COUNT = StageVar0_vTerminal;
+	writerecord 0;
+	RowRejected0 = 0;
+}
+
+finish {
+}
+
+=+=+=+=
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "TrxGenCache"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "TrxClassName"
+         Value "V0S2_J_LOAD_DIM_AIRPORT_Transformer_2"
+      END DSSUBRECORD
+      ValidationStatus "0"
+      StageType "CTransformerStage"
+      BlockSize "0"
+      SKKeySourceType "file"
+      StageVars "CStageVar"
+      BEGIN DSSUBRECORD
+         Name "vIATA"
+         Expression "UpCase(Trim(DSLink3.IATA_CODE))"
+         InitialValue "\"\""
+         SqlType "12"
+         ParsedExpression "UpCase(Trim(DSLink3.IATA_CODE))"
+         SourceColumn "DSLink3.IATA_CODE"
+         Precision "255"
+         ColScale "0"
+         ExtendedPrecision "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "vName"
+         Expression "UpCase(Trim(DSLink3.AIRPORT_NAME))"
+         InitialValue "\"\""
+         SqlType "12"
+         ParsedExpression "UpCase(Trim(DSLink3.AIRPORT_NAME))"
+         SourceColumn "DSLink3.AIRPORT_NAME"
+         Precision "255"
+         ColScale "0"
+         ExtendedPrecision "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "vCity"
+         Expression "UpCase(Trim(DSLink3.CITY))"
+         InitialValue "\"\""
+         SqlType "12"
+         ParsedExpression "UpCase(Trim(DSLink3.CITY))"
+         SourceColumn "DSLink3.CITY"
+         Precision "255"
+         ColScale "0"
+         ExtendedPrecision "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "vCountry"
+         Expression "UpCase(Trim(DSLink3.COUNTRY))"
+         InitialValue "\"\""
+         SqlType "12"
+         ParsedExpression "UpCase(Trim(DSLink3.COUNTRY))"
+         SourceColumn "DSLink3.COUNTRY"
+         Precision "255"
+         ColScale "0"
+         ExtendedPrecision "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "vTerminal"
+         Expression "If IsNull(DSLink3.TERMINAL_COUNT) Then 0 Else DSLink3.TERMINAL_COUNT"
+         InitialValue "0"
+         SqlType "12"
+         ParsedExpression " If IsNull(DSLink3.TERMINAL_COUNT) Then 0 Else DSLink3.TERMINAL_COUNT"
+         SourceColumn "DSLink3.TERMINAL_COUNT"
+         Precision "255"
+         ColScale "0"
+         ExtendedPrecision "0"
+      END DSSUBRECORD
+      StageVarsMinimised "0"
+      LoopVarsMaximised "0"
+      MaxLoopIterations "0"
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "V0S2P1"
+      OLEType "CTrxInput"
+      Readonly "0"
+      Name "DSLink3"
+      Partner "V0S0|V0S0P1"
+      LinkType "1"
+      MetaBag "CMetaProperty"
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "RTColumnProp"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "Schema"
+         Value =+=+=+=
+record
+(
+  AIRPORT_ID:nullable int32;
+  IATA_CODE:nullable ustring[max=3];
+  AIRPORT_NAME:nullable ustring[max=120];
+  CITY:nullable ustring[max=80];
+  COUNTRY:nullable ustring[max=80];
+  TIMEZONE:nullable ustring[max=80];
+  TERMINAL_COUNT:nullable decimal[38,10];
+)
+=+=+=+=
+      END DSSUBRECORD
+      MultiRow "0"
+      LinkMinimised "0"
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "V0S2P2"
+      OLEType "CTrxOutput"
+      Readonly "0"
+      Name "DSLink4"
+      Partner "V0S5|V0S5P2"
+      Reject "0"
+      ErrorPin "0"
+      RowLimit "0"
+      Columns "COutputColumn"
+      BEGIN DSSUBRECORD
+         Name "AIRPORT_ID"
+         Description "AIRPORT_ID: decimal[38,10]"
+         SqlType "4"
+         Precision "38"
+         Scale "10"
+         Nullable "0"
+         KeyPosition "1"
+         DisplaySize "0"
+         Derivation "DSLink3.AIRPORT_ID"
+         Group "0"
+         ParsedDerivation "DSLink3.AIRPORT_ID"
+         SourceColumn "DSLink3.AIRPORT_ID"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\DIM_AIRPORT"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         Usage "COMP-3"
+         PadChar ""
+         ColumnReference "AIRPORT_ID"
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "IATA_CODE"
+         Description "IATA_CODE: string[max=3]"
+         SqlType "12"
+         Precision "3"
+         Scale "0"
+         Nullable "0"
+         KeyPosition "0"
+         DisplaySize "0"
+         Derivation "vIATA"
+         Group "0"
+         ParsedDerivation "vIATA"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\DIM_AIRPORT"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         StageVars "vIATA"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ColumnReference "IATA_CODE"
+         ExtendedPrecision "1"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "AIRPORT_NAME"
+         Description "AIRPORT_NAME: string[max=120]"
+         SqlType "12"
+         Precision "120"
+         Scale "0"
+         Nullable "0"
+         KeyPosition "0"
+         DisplaySize "0"
+         Derivation "vName"
+         Group "0"
+         ParsedDerivation "vName"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\DIM_AIRPORT"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         StageVars "vName"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ColumnReference "AIRPORT_NAME"
+         ExtendedPrecision "1"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "CITY"
+         Description "CITY: string[max=80]"
+         SqlType "12"
+         Precision "80"
+         Scale "0"
+         Nullable "0"
+         KeyPosition "0"
+         DisplaySize "0"
+         Derivation "vCity"
+         Group "0"
+         ParsedDerivation "vCity"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\DIM_AIRPORT"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         StageVars "vCity"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ColumnReference "CITY"
+         ExtendedPrecision "1"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "COUNTRY"
+         Description "COUNTRY: string[max=80]"
+         SqlType "12"
+         Precision "80"
+         Scale "0"
+         Nullable "0"
+         KeyPosition "0"
+         DisplaySize "0"
+         Derivation "vCountry"
+         Group "0"
+         ParsedDerivation "vCountry"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\DIM_AIRPORT"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         StageVars "vCountry"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ColumnReference "COUNTRY"
+         ExtendedPrecision "1"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "TIMEZONE"
+         Description "TIMEZONE: nullable string[max=80]"
+         SqlType "12"
+         Precision "80"
+         Scale "0"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         Derivation "DSLink3.TIMEZONE"
+         Group "0"
+         ParsedDerivation "DSLink3.TIMEZONE"
+         SourceColumn "DSLink3.TIMEZONE"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\DIM_AIRPORT"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ColumnReference "TIMEZONE"
+         ExtendedPrecision "1"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "TERMINAL_COUNT"
+         Description "TERMINAL_COUNT: nullable decimal[38,10]"
+         SqlType "2"
+         Precision "38"
+         Scale "10"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         Derivation "vTerminal"
+         Group "0"
+         ParsedDerivation "vTerminal"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\DIM_AIRPORT"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         StageVars "vTerminal"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         Usage "COMP-3"
+         PadChar ""
+         ColumnReference "TERMINAL_COUNT"
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      MetaBag "CMetaProperty"
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "DiskWriteInc"
+         Value "1048576"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "BufFreeRun"
+         Value "50"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "MaxMemBufSize"
+         Value "3145728"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "QueueUpperSize"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "Schema"
+         Value =+=+=+=
+record
+(
+  AIRPORT_ID:int32;
+  IATA_CODE:ustring[max=3];
+  AIRPORT_NAME:ustring[max=120];
+  CITY:ustring[max=80];
+  COUNTRY:ustring[max=80];
+  TIMEZONE:nullable ustring[max=80];
+  TERMINAL_COUNT:nullable decimal[38,10];
+)
+=+=+=+=
+      END DSSUBRECORD
+      LeftTextPos "648"
+      TopTextPos "120"
+      LinkMinimised "0"
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "V0S5"
+      OLEType "CCustomStage"
+      Readonly "0"
+      Name "Remove_Duplicates_5"
+      NextID "3"
+      InputPins "V0S5P2"
+      OutputPins "V0S5P1"
+      StageType "PxRemDup"
+      AllowColumnMapping "0"
+      Properties "CCustomProperty"
+      BEGIN DSSUBRECORD
+         Name "keep"
+         Value "first"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "key"
+         Value "\(2)\(2)0\(1)\(3)key\(2)AIRPORT_ID\(2)0"
+      END DSSUBRECORD
+      NextRecordID "0"
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "V0S5P1"
+      OLEType "CCustomOutput"
+      Readonly "0"
+      Name "DSLink6"
+      Partner "V0S1|V0S1P2"
+      Columns "COutputColumn"
+      BEGIN DSSUBRECORD
+         Name "AIRPORT_ID"
+         Description "AIRPORT_ID: decimal[38,10]"
+         SqlType "4"
+         Precision "38"
+         Scale "10"
+         Nullable "0"
+         KeyPosition "1"
+         DisplaySize "0"
+         Derivation "DSLink4.AIRPORT_ID"
+         Group "0"
+         ParsedDerivation "DSLink4.AIRPORT_ID"
+         SourceColumn "DSLink4.AIRPORT_ID"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\DIM_AIRPORT"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         Usage "COMP-3"
+         PadChar ""
+         ColumnReference "AIRPORT_ID"
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "IATA_CODE"
+         Description "IATA_CODE: string[max=3]"
+         SqlType "12"
+         Precision "3"
+         Scale "0"
+         Nullable "0"
+         KeyPosition "0"
+         DisplaySize "0"
+         Derivation "DSLink4.IATA_CODE"
+         Group "0"
+         ParsedDerivation "DSLink4.IATA_CODE"
+         SourceColumn "DSLink4.IATA_CODE"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\DIM_AIRPORT"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ColumnReference "IATA_CODE"
+         ExtendedPrecision "1"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "AIRPORT_NAME"
+         Description "AIRPORT_NAME: string[max=120]"
+         SqlType "12"
+         Precision "120"
+         Scale "0"
+         Nullable "0"
+         KeyPosition "0"
+         DisplaySize "0"
+         Derivation "DSLink4.AIRPORT_NAME"
+         Group "0"
+         ParsedDerivation "DSLink4.AIRPORT_NAME"
+         SourceColumn "DSLink4.AIRPORT_NAME"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\DIM_AIRPORT"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ColumnReference "AIRPORT_NAME"
+         ExtendedPrecision "1"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "CITY"
+         Description "CITY: string[max=80]"
+         SqlType "12"
+         Precision "80"
+         Scale "0"
+         Nullable "0"
+         KeyPosition "0"
+         DisplaySize "0"
+         Derivation "DSLink4.CITY"
+         Group "0"
+         ParsedDerivation "DSLink4.CITY"
+         SourceColumn "DSLink4.CITY"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\DIM_AIRPORT"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ColumnReference "CITY"
+         ExtendedPrecision "1"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "COUNTRY"
+         Description "COUNTRY: string[max=80]"
+         SqlType "12"
+         Precision "80"
+         Scale "0"
+         Nullable "0"
+         KeyPosition "0"
+         DisplaySize "0"
+         Derivation "DSLink4.COUNTRY"
+         Group "0"
+         ParsedDerivation "DSLink4.COUNTRY"
+         SourceColumn "DSLink4.COUNTRY"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\DIM_AIRPORT"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ColumnReference "COUNTRY"
+         ExtendedPrecision "1"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "TIMEZONE"
+         Description "TIMEZONE: nullable string[max=80]"
+         SqlType "12"
+         Precision "80"
+         Scale "0"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         Derivation "DSLink4.TIMEZONE"
+         Group "0"
+         ParsedDerivation "DSLink4.TIMEZONE"
+         SourceColumn "DSLink4.TIMEZONE"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\DIM_AIRPORT"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ColumnReference "TIMEZONE"
+         ExtendedPrecision "1"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "TERMINAL_COUNT"
+         Description "TERMINAL_COUNT: nullable decimal[38,10]"
+         SqlType "2"
+         Precision "38"
+         Scale "10"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         Derivation "DSLink4.TERMINAL_COUNT"
+         Group "0"
+         ParsedDerivation "DSLink4.TERMINAL_COUNT"
+         SourceColumn "DSLink4.TERMINAL_COUNT"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\DIM_AIRPORT"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         Usage "COMP-3"
+         PadChar ""
+         ColumnReference "TERMINAL_COUNT"
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      MetaBag "CMetaProperty"
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "DiskWriteInc"
+         Value "1048576"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "BufFreeRun"
+         Value "50"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "MaxMemBufSize"
+         Value "3145728"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "QueueUpperSize"
+         Value "0"
+      END DSSUBRECORD
+      LeftTextPos "800"
+      TopTextPos "120"
+      LinkMinimised "0"
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "V0S5P2"
+      OLEType "CCustomInput"
+      Readonly "0"
+      Name "DSLink4"
+      Partner "V0S2|V0S2P2"
+      LinkType "1"
+      ConditionNotMet "fail"
+      LookupFail "fail"
+      MetaBag "CMetaProperty"
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "RTColumnProp"
+         Value "0"
+      END DSSUBRECORD
+      TransactionSize "0"
+      TXNBehaviour "0"
+      EnableTxGroup "0"
+      LinkMinimised "0"
+   END DSRECORD
+END DSJOB
+BEGIN DSSTAGETYPES
+END DSSTAGETYPES
+BEGIN DSTABLEDEFS
+   BEGIN DSRECORD
+      Identifier "Oracle\\XE\\DIM_AIRPORT"
+      DateModified "2026-06-24"
+      TimeModified "21.18.38"
+      OLEType "CMetaTable"
+      Readonly "0"
+      Category "\\Table Definitions\\Oracle\\XE"
+      ShortDesc "Imported from: DIM_AIRPORT"
+      Description =+=+=+=
+Orchestrate Schema Importer - on 2026-06-24 at 21:18:33
+DBMS type: Oracle, Database server: XE
+=+=+=+=
+      Version "9"
+      Multivalued "0"
+      Columns "CMetaColumn"
+      BEGIN DSSUBRECORD
+         Name "AIRPORT_ID"
+         Description "AIRPORT_ID: decimal[38,10]"
+         SqlType "3"
+         Precision "38"
+         Scale "10"
+         Nullable "0"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         Usage "COMP-3"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "IATA_CODE"
+         Description "IATA_CODE: string[max=3]"
+         SqlType "12"
+         Precision "3"
+         Scale "0"
+         Nullable "0"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "AIRPORT_NAME"
+         Description "AIRPORT_NAME: string[max=120]"
+         SqlType "12"
+         Precision "120"
+         Scale "0"
+         Nullable "0"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "CITY"
+         Description "CITY: string[max=80]"
+         SqlType "12"
+         Precision "80"
+         Scale "0"
+         Nullable "0"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "COUNTRY"
+         Description "COUNTRY: string[max=80]"
+         SqlType "12"
+         Precision "80"
+         Scale "0"
+         Nullable "0"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "TIMEZONE"
+         Description "TIMEZONE: nullable string[max=80]"
+         SqlType "12"
+         Precision "80"
+         Scale "0"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "TERMINAL_COUNT"
+         Description "TERMINAL_COUNT: nullable decimal[38,10]"
+         SqlType "3"
+         Precision "38"
+         Scale "10"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         Usage "COMP-3"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      SEQ-Delimiter ","
+      SEQ-QuoteChar "\""
+      SEQ-ColHeaders "0"
+      SEQ-FixedWidth "0"
+      SEQ-ColSpace "0"
+      SEQ-OmitNewLine "0"
+      AllowColumnMapping "0"
+      Locator "TableType=\"orchdbutil\"|computer=\"XE\"|SoftwareProduct=\"Oracle\"|DataStore(Database)=\"XE\"|DataSchema(Schema)=\"HR\"|DataCollection(Table)=\"DIM_AIRPORT\""
+      PadChar ""
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "Oracle\\XE\\HR_AIRPORTS"
+      DateModified "2026-06-24"
+      TimeModified "21.35.52"
+      OLEType "CMetaTable"
+      Readonly "0"
+      Category "\\Table Definitions\\Oracle\\XE"
+      ShortDesc "Imported from: HR.AIRPORTS"
+      Description =+=+=+=
+Orchestrate Schema Importer - on 2026-06-24 at 21:35:48
+DBMS type: Oracle, Database server: XE
+=+=+=+=
+      Version "9"
+      Multivalued "0"
+      Columns "CMetaColumn"
+      BEGIN DSSUBRECORD
+         Name "AIRPORT_ID"
+         Description "AIRPORT_ID: nullable decimal[38,10]"
+         SqlType "3"
+         Precision "38"
+         Scale "10"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         Usage "COMP-3"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "IATA_CODE"
+         Description "IATA_CODE: nullable string[max=3]"
+         SqlType "12"
+         Precision "3"
+         Scale "0"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "AIRPORT_NAME"
+         Description "AIRPORT_NAME: nullable string[max=120]"
+         SqlType "12"
+         Precision "120"
+         Scale "0"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "CITY"
+         Description "CITY: nullable string[max=80]"
+         SqlType "12"
+         Precision "80"
+         Scale "0"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "COUNTRY"
+         Description "COUNTRY: nullable string[max=80]"
+         SqlType "12"
+         Precision "80"
+         Scale "0"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "TIMEZONE"
+         Description "TIMEZONE: nullable string[max=80]"
+         SqlType "12"
+         Precision "80"
+         Scale "0"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "TERMINAL_COUNT"
+         Description "TERMINAL_COUNT: nullable decimal[38,10]"
+         SqlType "3"
+         Precision "38"
+         Scale "10"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         Usage "COMP-3"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      SEQ-Delimiter ","
+      SEQ-QuoteChar "\""
+      SEQ-ColHeaders "0"
+      SEQ-FixedWidth "0"
+      SEQ-ColSpace "0"
+      SEQ-OmitNewLine "0"
+      AllowColumnMapping "0"
+      Locator "TableType=\"orchdbutil\"|computer=\"XE\"|SoftwareProduct=\"Oracle\"|DataStore(Database)=\"XE\"|DataSchema(Schema)=\"HR\"|DataCollection(Table)=\"HR_AIRPORTS\""
+      PadChar ""
+   END DSRECORD
+END DSTABLEDEFS
+BEGIN DSPARAMETERSETS
+   BEGIN DSRECORD
+      Identifier "Airline_Auth"
+      DateModified "2026-06-23"
+      TimeModified "23.16.57"
+      OLEType "CParameterSet"
+      Readonly "0"
+      Category "\\Jobs\\Airline_Analystics"
+      Parameters "CParameters"
+      BEGIN DSSUBRECORD
+         Name "SERVER"
+         Prompt "SERVER"
+         Default "XE"
+         ParamType "0"
+         ParamLength "0"
+         ParamScale "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "PASS"
+         Prompt "PASS"
+         Default "{iisenc}R9Z+PqrqrQ5nBB4PRrSOEg=="
+         ParamType "1"
+         ParamLength "0"
+         ParamScale "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "USER"
+         Prompt "USER"
+         Default "HR"
+         ParamType "0"
+         ParamLength "0"
+         ParamScale "0"
+      END DSSUBRECORD
+   END DSRECORD
+END DSPARAMETERSETS

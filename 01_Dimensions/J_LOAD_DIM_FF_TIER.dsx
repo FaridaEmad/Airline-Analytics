@@ -1,0 +1,1874 @@
+BEGIN HEADER
+   CharacterSet "CP1252"
+   ExportingTool "IBM InfoSphere DataStage Export"
+   ToolVersion "8"
+   ServerName "IBMDSSERVER"
+   ToolInstanceID "ITI45"
+   MDISVersion "1.0"
+   Date "2026-06-25"
+   Time "00.47.56"
+   ServerVersion "9.1"
+END HEADER
+BEGIN DSJOB
+   Identifier "J_LOAD_DIM_DIM_FF_TIER"
+   DateModified "2026-06-25"
+   TimeModified "00.38.00"
+   BEGIN DSRECORD
+      Identifier "ROOT"
+      OLEType "CJobDefn"
+      Readonly "0"
+      Name "J_LOAD_DIM_DIM_FF_TIER"
+      NextID "1"
+      Container "V0"
+      JobVersion "56.0.0"
+      ControlAfterSubr "0"
+      Parameters "CParameters"
+      BEGIN DSSUBRECORD
+         Name "Airline_Auth"
+         Prompt "Airline_Auth parameters"
+         Default "(As pre-defined)"
+         ParamType "13"
+         ParamLength "0"
+         ParamScale "0"
+      END DSSUBRECORD
+      MetaBag "CMetaProperty"
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "AdvancedRuntimeOptions"
+         Value "#DSProjectARTOptions#"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "TraceMode"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "TraceSeq"
+         Value "1"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "TraceRecords"
+         Value "100"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "TraceSkip"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "TracePeriod"
+         Value "1"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "RecordJobPerformanceData"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "IdentList"
+         Value "Oracle_Connector_17|Oracle_Connector_18|Transformer_19|Remove_Duplicates_20"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "ClientCodePage"
+         Value "1252"
+      END DSSUBRECORD
+      NULLIndicatorPosition "0"
+      OrchestrateCode =+=+=+=
+#################################################################
+#### STAGE: Oracle_Connector_17
+## Operator
+pxbridge
+## Operator options
+-Orientation link
+-XMLProperties '<?xml version=\\'1.0\\' encoding=\\'UTF-16\\'?><Properties version=\\'1.1\\'><Common><Context type=\\'int\\'>1</Context><Variant type=\\'string\\'>11g</Variant><DescriptorVersion type=\\'string\\'>1.0</DescriptorVersion><PartitionType type=\\'int\\'>-1</PartitionType><RCP type=\\'int\\'>0</RCP></Common><Connection><Server modified=\\'1\\' type=\\'string\\'><![CDATA[[&"Airline_Auth.SERVER"]]]></Server><Username modified=\\'1\\' type=\\'string\\'><![CDATA[[&"Airline_Auth.USER"]]]></Username><Password modified=\\'1\\' type=\\'string\\'><![CDATA[[&"Airline_Auth.PASS"]]]></Password><OSLevelAuthentication type=\\'bool\\'><![CDATA[0]]></OSLevelAuthentication><Version modified=\\'1\\' type=\\'string\\'><![CDATA[11g]]></Version></Connection><Usage><ReadMode type=\\'int\\'><![CDATA[0]]></ReadMode><GenerateSQL modified=\\'1\\' type=\\'bool\\'><![CDATA[1]]></GenerateSQL><TableName modified=\\'1\\' type=\\'string\\'><![CDATA[HR.FREQUENT_FLYER_TIERS]]><TableScope type=\\'int\\'><![CDATA[0]]></TableScope></TableName><EnableQuotedIDs type=\\'bool\\'><![CDATA[0]]></EnableQuotedIDs><SQL></SQL><EnablePartitionedReads collapsed=\\'1\\' type=\\'bool\\'><![CDATA[0]]></EnablePartitionedReads><Transaction><IsolationLevel type=\\'int\\'><![CDATA[0]]></IsolationLevel><RecordCount type=\\'int\\'><![CDATA[2000]]></RecordCount><EndOfWave type=\\'int\\'><![CDATA[0]]></EndOfWave></Transaction><Session><ArraySize type=\\'int\\'><![CDATA[2000]]></ArraySize><PrefetchRowCount type=\\'int\\'><![CDATA[1]]></PrefetchRowCount><PrefetchMemorySize type=\\'int\\'><![CDATA[0]]></PrefetchMemorySize><PassLobLocator collapsed=\\'1\\' type=\\'bool\\'><![CDATA[0]]></PassLobLocator><BFILEasBLOB type=\\'bool\\'><![CDATA[0]]></BFILEasBLOB><TreatWarningsAsErrors type=\\'bool\\'><![CDATA[0]]></TreatWarningsAsErrors><TreatFetchTruncateAsError type=\\'bool\\'><![CDATA[1]]></TreatFetchTruncateAsError></Session><BeforeAfter collapsed=\\'1\\' type=\\'bool\\'><![CDATA[0]]></BeforeAfter><ApplicationFailoverControl collapsed=\\'1\\' type=\\'bool\\'><![CDATA[0]]></ApplicationFailoverControl></Usage></Properties >'
+-connector '{
+   variant=\\'11g\\', 
+   library=ccora11g, 
+   version=1.0, 
+   variantlist=\\'V1;10:"10g":ccora10g;11:"11g":ccora11g\\', 
+   versionlist=\\'1.0,1.0\\', 
+   name=OracleConnector
+}'
+-source 0 '{
+      DSDescription={TIER_ID=\\'TIER_ID\\: nullable decimal\\[38\\,10\\]\\', TIER_NAME=\\'TIER_NAME\\: nullable string\\[max\\=30\\]\\', MIN_MILES=\\'MIN_MILES\\: nullable decimal\\[38\\,10\\]\\', LOUNGE_ACCESS=\\'LOUNGE_ACCESS\\: nullable string\\[max\\=1\\]\\', PRIORITY_BOARDING=\\'PRIORITY_BOARDING\\: nullable string\\[max\\=1\\]\\', UPGRADE_ELIGIBLE=\\'UPGRADE_ELIGIBLE\\: nullable string\\[max\\=1\\]\\', BONUS_MILES_PCT=\\'BONUS_MILES_PCT\\: nullable decimal\\[5\\,2\\]\\'}, 
+      DSSQLType={TIER_ID=4, TIER_NAME=12, MIN_MILES=2, LOUNGE_ACCESS=12, PRIORITY_BOARDING=12, UPGRADE_ELIGIBLE=12, BONUS_MILES_PCT=2}, 
+      DSSQLPrecision={TIER_ID=38, TIER_NAME=30, MIN_MILES=38, LOUNGE_ACCESS=1, PRIORITY_BOARDING=1, UPGRADE_ELIGIBLE=1, BONUS_MILES_PCT=5}, 
+      DSSQLScale={TIER_ID=10, MIN_MILES=10, BONUS_MILES_PCT=2}, 
+      DSSchema=\\'record
+         (
+           TIER_ID\\:nullable int32\\;
+           TIER_NAME\\:nullable ustring\\[max\\=30\\]\\;
+           MIN_MILES\\:nullable decimal\\[38\\,10\\]\\;
+           LOUNGE_ACCESS\\:nullable ustring\\[max\\=1\\]\\;
+           PRIORITY_BOARDING\\:nullable ustring\\[max\\=1\\]\\;
+           UPGRADE_ELIGIBLE\\:nullable ustring\\[max\\=1\\]\\;
+           BONUS_MILES_PCT\\:nullable decimal\\[5\\,2\\]\\;
+         )\\'
+}'
+   
+
+## General options
+[ident('Oracle_Connector_17'); jobmon_ident('Oracle_Connector_17')]
+## Outputs
+0> [modify (
+  TIER_ID:nullable int32=TIER_ID;
+  TIER_NAME:nullable ustring[max=30]=TIER_NAME;
+  MIN_MILES:nullable decimal[38,10]=MIN_MILES;
+  LOUNGE_ACCESS:nullable ustring[max=1]=LOUNGE_ACCESS;
+  PRIORITY_BOARDING:nullable ustring[max=1]=PRIORITY_BOARDING;
+  UPGRADE_ELIGIBLE:nullable ustring[max=1]=UPGRADE_ELIGIBLE;
+  BONUS_MILES_PCT:nullable decimal[5,2]=BONUS_MILES_PCT;
+keep
+  TIER_ID,TIER_NAME,MIN_MILES,LOUNGE_ACCESS,
+  PRIORITY_BOARDING,UPGRADE_ELIGIBLE,BONUS_MILES_PCT;
+)] 'Oracle_Connector_17:DSLink22.v'
+;
+
+#################################################################
+#### STAGE: Oracle_Connector_18
+## Operator
+pxbridge
+## Operator options
+-Orientation link
+-XMLProperties '<?xml version=\\'1.0\\' encoding=\\'UTF-16\\'?><Properties version=\\'1.1\\'><Common><Context type=\\'int\\'>2</Context><Variant type=\\'string\\'>11g</Variant><DescriptorVersion type=\\'string\\'>1.0</DescriptorVersion><PartitionType type=\\'int\\'>-1</PartitionType><RCP type=\\'int\\'>0</RCP></Common><Connection><Server modified=\\'1\\' type=\\'string\\'><![CDATA[[&"Airline_Auth.SERVER"]]]></Server><Username modified=\\'1\\' type=\\'string\\'><![CDATA[[&"Airline_Auth.USER"]]]></Username><Password modified=\\'1\\' type=\\'string\\'><![CDATA[[&"Airline_Auth.PASS"]]]></Password><OSLevelAuthentication type=\\'bool\\'><![CDATA[0]]></OSLevelAuthentication><Version modified=\\'1\\' type=\\'string\\'><![CDATA[11g]]></Version></Connection><Usage><WriteMode modified=\\'1\\' type=\\'int\\'><![CDATA[4]]></WriteMode><GenerateSQL modified=\\'1\\' type=\\'bool\\'><![CDATA[1]]></GenerateSQL><TableName modified=\\'1\\' type=\\'string\\'><![CDATA[DIM_FF_TIER]]><TableScope type=\\'int\\'><![CDATA[0]]></TableScope></TableName><EnableQuotedIDs type=\\'bool\\'><![CDATA[0]]></EnableQuotedIDs><SQL></SQL><TableAction collapsed=\\'1\\' type=\\'int\\'><![CDATA[0]]></TableAction><Transaction><IsolationLevel type=\\'int\\'><![CDATA[0]]></IsolationLevel><RecordCount type=\\'int\\'><![CDATA[2000]]></RecordCount></Transaction><Session><ArraySize type=\\'int\\'><![CDATA[2000]]></ArraySize><DropUnmatchedFields type=\\'bool\\'><![CDATA[0]]></DropUnmatchedFields><TreatWarningsAsErrors type=\\'bool\\'><![CDATA[0]]></TreatWarningsAsErrors><PreserveTrailingBlanks type=\\'bool\\'><![CDATA[1]]></PreserveTrailingBlanks><FailOnRowErrorPX type=\\'bool\\'><![CDATA[1]]></FailOnRowErrorPX></Session><Logging><LogColumnValues collapsed=\\'1\\' type=\\'bool\\'><![CDATA[0]]></LogColumnValues></Logging><BeforeAfter collapsed=\\'1\\' type=\\'bool\\'><![CDATA[0]]></BeforeAfter><ApplicationFailoverControl collapsed=\\'1\\' type=\\'bool\\'><![CDATA[0]]></ApplicationFailoverControl><Reconnect collapsed=\\'1\\' type=\\'bool\\'><![CDATA[0]]></Reconnect><Disconnect collapsed=\\'1\\' type=\\'int\\'><![CDATA[0]]></Disconnect></Usage></Properties >'
+-connector '{
+   variant=\\'11g\\', 
+   library=ccora11g, 
+   version=1.0, 
+   variantlist=\\'V1;10:"10g":ccora10g;11:"11g":ccora11g\\', 
+   versionlist=\\'1.0,1.0\\', 
+   name=OracleConnector
+}'
+-target 0 '{
+      DSDescription={TIER_ID=\\'TIER_ID\\: decimal\\[38\\,10\\]\\', TIER_NAME=\\'TIER_NAME\\: string\\[max\\=30\\]\\', MIN_MILES=\\'MIN_MILES\\: nullable decimal\\[38\\,10\\]\\', LOUNGE_ACCESS=\\'LOUNGE_ACCESS\\: string\\[max\\=1\\]\\', PRIORITY_BOARDING=\\'PRIORITY_BOARDING\\: string\\[max\\=1\\]\\', UPGRADE_ELIGIBLE=\\'UPGRADE_ELIGIBLE\\: string\\[max\\=1\\]\\', BONUS_MILES_PCT=\\'BONUS_MILES_PCT\\: nullable decimal\\[5\\,2\\]\\'}, 
+      DSIsKey={TIER_ID=1}, 
+      DSSQLType={TIER_ID=4, TIER_NAME=12, MIN_MILES=2, LOUNGE_ACCESS=12, PRIORITY_BOARDING=12, UPGRADE_ELIGIBLE=12, BONUS_MILES_PCT=2}, 
+      DSDerivation={TIER_ID=\\'DSLink24\\.TIER_ID\\', TIER_NAME=\\'DSLink24\\.TIER_NAME\\', MIN_MILES=\\'DSLink24\\.MIN_MILES\\', LOUNGE_ACCESS=\\'DSLink24\\.LOUNGE_ACCESS\\', PRIORITY_BOARDING=\\'DSLink24\\.PRIORITY_BOARDING\\', UPGRADE_ELIGIBLE=\\'DSLink24\\.UPGRADE_ELIGIBLE\\', BONUS_MILES_PCT=\\'DSLink24\\.BONUS_MILES_PCT\\'}, 
+      DSSQLPrecision={TIER_ID=38, TIER_NAME=30, MIN_MILES=38, LOUNGE_ACCESS=1, PRIORITY_BOARDING=1, UPGRADE_ELIGIBLE=1, BONUS_MILES_PCT=5}, 
+      DSSQLScale={TIER_ID=10, MIN_MILES=10, BONUS_MILES_PCT=2}, 
+      DSSchema=\\'record
+         (
+           TIER_ID\\:int32\\;
+           TIER_NAME\\:ustring\\[max\\=30\\]\\;
+           MIN_MILES\\:nullable decimal\\[38\\,10\\]\\;
+           LOUNGE_ACCESS\\:ustring\\[max\\=1\\]\\;
+           PRIORITY_BOARDING\\:ustring\\[max\\=1\\]\\;
+           UPGRADE_ELIGIBLE\\:ustring\\[max\\=1\\]\\;
+           BONUS_MILES_PCT\\:nullable decimal\\[5\\,2\\]\\;
+         )\\'
+}'
+   
+
+## General options
+[ident('Oracle_Connector_18'); jobmon_ident('Oracle_Connector_18')]
+## Inputs
+0< [] 'Remove_Duplicates_20:DSLink25.v'
+;
+
+#################################################################
+#### STAGE: Transformer_19
+## Operator
+transform
+## Operator options
+-flag run
+-name 'V0S19_J_LOAD_DIM_DIM_FF_TIER_Transformer_19'
+
+## General options
+[ident('Transformer_19'); jobmon_ident('Transformer_19')]
+## Inputs
+0< [] 'Oracle_Connector_17:DSLink22.v'
+## Outputs
+0> [] 'Transformer_19:DSLink24.v'
+;
+
+#################################################################
+#### STAGE: Remove_Duplicates_20
+## Operator
+remdup
+## Operator options
+-keep first
+-key 'TIER_ID'
+
+## General options
+[ident('Remove_Duplicates_20'); jobmon_ident('Remove_Duplicates_20')]
+## Inputs
+0< [] 'Transformer_19:DSLink24.v'
+## Outputs
+0> [modify (
+  TIER_ID:not_nullable int32=TIER_ID;
+  TIER_NAME:not_nullable ustring[max=30]=TIER_NAME;
+  LOUNGE_ACCESS:not_nullable ustring[max=1]=LOUNGE_ACCESS;
+  PRIORITY_BOARDING:not_nullable ustring[max=1]=PRIORITY_BOARDING;
+  UPGRADE_ELIGIBLE:not_nullable ustring[max=1]=UPGRADE_ELIGIBLE;
+keep
+  MIN_MILES,BONUS_MILES_PCT;
+)] 'Remove_Duplicates_20:DSLink25.v'
+;
+
+
+=+=+=+=
+      IsTemplate "0"
+      NLSLocale ",,,,"
+      JobType "3"
+      Category "\\Jobs\\Airline_Analystics\\01_DIMENSIONS"
+      CenturyBreakYear "30"
+      NextAliasID "2"
+      ParameterFileDDName "DD00001"
+      ReservedWordCheck "1"
+      TransactionSize "0"
+      ValidationStatus "0"
+      Uploadable "0"
+      PgmCustomizationFlag "0"
+      JobReportFlag "0"
+      AllowMultipleInvocations "0"
+      Act2ActOverideDefaults "0"
+      Act2ActEnableRowBuffer "0"
+      Act2ActUseIPC "0"
+      Act2ActBufferSize "0"
+      Act2ActIPCTimeout "0"
+      ExpressionSemanticCheckFlag "0"
+      TraceOption "0"
+      EnableCacheSharing "0"
+      RuntimeColumnPropagation "0"
+      RelStagesInJobStatus "-1"
+      WebServiceEnabled "0"
+      MFProcessMetaData "0"
+      MFProcessMetaDataXMLFileExchangeMethod "0"
+      IMSProgType "0"
+      CopyLibPrefix "ARDT"
+      RecordPerformanceResults "0"
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "V0"
+      OLEType "CContainerView"
+      Readonly "0"
+      Name "Job"
+      NextID "1"
+      IsTopLevel "0"
+      StageList "V0S17|V0S18|V0S19|V0S20"
+      StageXPos "160|1075|380|672"
+      StageYPos "96|70|114|96"
+      StageTypes "CCustomStage.CC_GUI|CCustomStage.CC_GUI|CTransformerStage|CCustomStage"
+      NextStageID "26"
+      SnapToGrid "2"
+      GridLines "0"
+      ZoomValue "100"
+      StageXSize "48|48|48|48"
+      StageYSize "48|48|48|48"
+      ContainerViewSizing "0022 0022 0355 0380 0000 0001 0146 0000"
+      StageNames "Oracle_Connector_17|Oracle_Connector_18|Transformer_19|Remove_Duplicates_20"
+      StageTypeIDs "OracleConnectorPX|OracleConnectorPX|CTransformerStage|PxRemDup"
+      LinkNames "DSLink22| |DSLink24|DSLink25"
+      LinkHasMetaDatas "True| |True|True"
+      LinkTypes "1| |1|1"
+      LinkNamePositionXs "312| |539|745"
+      LinkNamePositionYs "108| |138|115"
+      TargetStageIDs "V0S19| |V0S20|V0S18"
+      SourceStageEffectiveExecutionModes "2| |2|2"
+      SourceStageRuntimeExecutionModes "2| |2|2"
+      TargetStageEffectiveExecutionModes "2| |2|2"
+      TargetStageRuntimeExecutionModes "2| |2|2"
+      LinkIsSingleOperatorLookup "False| |False|False"
+      LinkIsSortSequential "False| |False|False"
+      LinkSortMode "0| |0|0"
+      LinkPartColMode "1| |1|1"
+      LinkSourcePinIDs "V0S17P1| |V0S19P2|V0S20P2"
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "V0S17"
+      OLEType "CCustomStage"
+      Readonly "0"
+      Name "Oracle_Connector_17"
+      NextID "2"
+      OutputPins "V0S17P1"
+      StageType "OracleConnectorPX"
+      AllowColumnMapping "0"
+      Properties "CCustomProperty"
+      BEGIN DSSUBRECORD
+         Name "VariantName"
+         Value "11g"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "VariantLibrary"
+         Value "ccora11g"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "VariantVersion"
+         Value "1.0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "SupportedVariants"
+         Value "V1;10:\"10g\":ccora10g;11:\"11g\":ccora11g"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "SupportedVariantsLibraries"
+         Value "ccora10g,ccora11g"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "SupportedVariantsVersions"
+         Value "1.0,1.0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Orientation"
+         Value "link"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectFromLink"
+         Value "-1"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectThreshold"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectNumber"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectUsesPercentage"
+         Value "false"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "ConnectorName"
+         Value "OracleConnector"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Engine"
+         Value "EE"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Context"
+         Value "source"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "ConnectionString"
+         Value "/Connection/Server"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Username"
+         Value "/Connection/Username"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Password"
+         Value "/Connection/Password"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "xaoDbName"
+         Value "/Connection/xaoDbName"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "OSLevelAuthentication"
+         Value "/Connection/OSLevelAuthentication"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "XMLProperties"
+         Value "<?xml version='1.0' encoding='UTF-16'?><Properties version='1.1'><Common><Context type='int'>1</Context><Variant type='string'>11g</Variant><DescriptorVersion type='string'>1.0</DescriptorVersion><PartitionType type='int'>-1</PartitionType><RCP type='int'>0</RCP></Common><Connection><Server modified='1' type='string'><![CDATA[#Airline_Auth.SERVER#]]></Server><Username modified='1' type='string'><![CDATA[#Airline_Auth.USER#]]></Username><Password modified='1' type='string'><![CDATA[#Airline_Auth.PASS#]]></Password><OSLevelAuthentication type='bool'><![CDATA[0]]></OSLevelAuthentication><Version modified='1' type='string'><![CDATA[11g]]></Version></Connection><Usage><ReadMode type='int'><![CDATA[0]]></ReadMode><GenerateSQL modified='1' type='bool'><![CDATA[1]]></GenerateSQL><TableName modified='1' type='string'><![CDATA[HR.FREQUENT_FLYER_TIERS]]><TableScope type='int'><![CDATA[0]]></TableScope></TableName><EnableQuotedIDs type='bool'><![CDATA[0]]></EnableQuotedIDs><SQL></SQL><EnablePartitionedReads collapsed='1' type='bool'><![CDATA[0]]></EnablePartitionedReads><Transaction><IsolationLevel type='int'><![CDATA[0]]></IsolationLevel><RecordCount type='int'><![CDATA[2000]]></RecordCount><EndOfWave type='int'><![CDATA[0]]></EndOfWave></Transaction><Session><ArraySize type='int'><![CDATA[2000]]></ArraySize><PrefetchRowCount type='int'><![CDATA[1]]></PrefetchRowCount><PrefetchMemorySize type='int'><![CDATA[0]]></PrefetchMemorySize><PassLobLocator collapsed='1' type='bool'><![CDATA[0]]></PassLobLocator><BFILEasBLOB type='bool'><![CDATA[0]]></BFILEasBLOB><TreatWarningsAsErrors type='bool'><![CDATA[0]]></TreatWarningsAsErrors><TreatFetchTruncateAsError type='bool'><![CDATA[1]]></TreatFetchTruncateAsError></Session><BeforeAfter collapsed='1' type='bool'><![CDATA[0]]></BeforeAfter><ApplicationFailoverControl collapsed='1' type='bool'><![CDATA[0]]></ApplicationFailoverControl></Usage></Properties >"
+      END DSSUBRECORD
+      NextRecordID "0"
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "V0S17P1"
+      OLEType "CCustomOutput"
+      Readonly "0"
+      Name "DSLink22"
+      Partner "V0S19|V0S19P1"
+      Properties "CCustomProperty"
+      BEGIN DSSUBRECORD
+         Name "lookup\\type"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "VariantName"
+         Value "10"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "VariantLibrary"
+         Value "ccora10g"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "VariantVersion"
+         Value "1.0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectFromLink"
+         Value "-1"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectThreshold"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectNumber"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectUsesPercentage"
+         Value "false"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "ConnectorName"
+         Value "OracleConnector"
+      END DSSUBRECORD
+      Columns "COutputColumn"
+      BEGIN DSSUBRECORD
+         Name "TIER_ID"
+         Description "TIER_ID: nullable decimal[38,10]"
+         SqlType "4"
+         Precision "38"
+         Scale "10"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         Group "0"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\HR_FREQUENT_FLYER_TIERS"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         Usage "COMP-3"
+         PadChar ""
+         ColumnReference "TIER_ID"
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "TIER_NAME"
+         Description "TIER_NAME: nullable string[max=30]"
+         SqlType "12"
+         Precision "30"
+         Scale "0"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         Group "0"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\HR_FREQUENT_FLYER_TIERS"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ColumnReference "TIER_NAME"
+         ExtendedPrecision "1"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "MIN_MILES"
+         Description "MIN_MILES: nullable decimal[38,10]"
+         SqlType "2"
+         Precision "38"
+         Scale "10"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         Group "0"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\HR_FREQUENT_FLYER_TIERS"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         Usage "COMP-3"
+         PadChar ""
+         ColumnReference "MIN_MILES"
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "LOUNGE_ACCESS"
+         Description "LOUNGE_ACCESS: nullable string[max=1]"
+         SqlType "12"
+         Precision "1"
+         Scale "0"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         Group "0"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\HR_FREQUENT_FLYER_TIERS"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ColumnReference "LOUNGE_ACCESS"
+         ExtendedPrecision "1"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "PRIORITY_BOARDING"
+         Description "PRIORITY_BOARDING: nullable string[max=1]"
+         SqlType "12"
+         Precision "1"
+         Scale "0"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         Group "0"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\HR_FREQUENT_FLYER_TIERS"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ColumnReference "PRIORITY_BOARDING"
+         ExtendedPrecision "1"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "UPGRADE_ELIGIBLE"
+         Description "UPGRADE_ELIGIBLE: nullable string[max=1]"
+         SqlType "12"
+         Precision "1"
+         Scale "0"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         Group "0"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\HR_FREQUENT_FLYER_TIERS"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ColumnReference "UPGRADE_ELIGIBLE"
+         ExtendedPrecision "1"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "BONUS_MILES_PCT"
+         Description "BONUS_MILES_PCT: nullable decimal[5,2]"
+         SqlType "2"
+         Precision "5"
+         Scale "2"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         Group "0"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\HR_FREQUENT_FLYER_TIERS"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         Usage "COMP-3"
+         PadChar ""
+         ColumnReference "BONUS_MILES_PCT"
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      MetaBag "CMetaProperty"
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "DiskWriteInc"
+         Value "1048576"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "BufFreeRun"
+         Value "50"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "MaxMemBufSize"
+         Value "3145728"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "QueueUpperSize"
+         Value "0"
+      END DSSUBRECORD
+      LeftTextPos "312"
+      TopTextPos "108"
+      LinkMinimised "0"
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "V0S18"
+      OLEType "CCustomStage"
+      Readonly "0"
+      Name "Oracle_Connector_18"
+      NextID "2"
+      InputPins "V0S18P1"
+      StageType "OracleConnectorPX"
+      AllowColumnMapping "0"
+      Properties "CCustomProperty"
+      BEGIN DSSUBRECORD
+         Name "VariantName"
+         Value "11g"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "VariantLibrary"
+         Value "ccora11g"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "VariantVersion"
+         Value "1.0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "SupportedVariants"
+         Value "V1;10:\"10g\":ccora10g;11:\"11g\":ccora11g"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "SupportedVariantsLibraries"
+         Value "ccora10g,ccora11g"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "SupportedVariantsVersions"
+         Value "1.0,1.0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Orientation"
+         Value "link"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectFromLink"
+         Value "-1"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectThreshold"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectNumber"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectUsesPercentage"
+         Value "false"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "ConnectorName"
+         Value "OracleConnector"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Engine"
+         Value "EE"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Context"
+         Value "target"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "ConnectionString"
+         Value "/Connection/Server"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Username"
+         Value "/Connection/Username"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Password"
+         Value "/Connection/Password"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "xaoDbName"
+         Value "/Connection/xaoDbName"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "OSLevelAuthentication"
+         Value "/Connection/OSLevelAuthentication"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "XMLProperties"
+         Value "<?xml version='1.0' encoding='UTF-16'?><Properties version='1.1'><Common><Context type='int'>2</Context><Variant type='string'>11g</Variant><DescriptorVersion type='string'>1.0</DescriptorVersion><PartitionType type='int'>-1</PartitionType><RCP type='int'>0</RCP></Common><Connection><Server modified='1' type='string'><![CDATA[#Airline_Auth.SERVER#]]></Server><Username modified='1' type='string'><![CDATA[#Airline_Auth.USER#]]></Username><Password modified='1' type='string'><![CDATA[#Airline_Auth.PASS#]]></Password><OSLevelAuthentication type='bool'><![CDATA[0]]></OSLevelAuthentication><Version modified='1' type='string'><![CDATA[11g]]></Version></Connection><Usage><WriteMode modified='1' type='int'><![CDATA[4]]></WriteMode><GenerateSQL modified='1' type='bool'><![CDATA[1]]></GenerateSQL><TableName modified='1' type='string'><![CDATA[DIM_FF_TIER]]><TableScope type='int'><![CDATA[0]]></TableScope></TableName><EnableQuotedIDs type='bool'><![CDATA[0]]></EnableQuotedIDs><SQL></SQL><TableAction collapsed='1' type='int'><![CDATA[0]]></TableAction><Transaction><IsolationLevel type='int'><![CDATA[0]]></IsolationLevel><RecordCount type='int'><![CDATA[2000]]></RecordCount></Transaction><Session><ArraySize type='int'><![CDATA[2000]]></ArraySize><DropUnmatchedFields type='bool'><![CDATA[0]]></DropUnmatchedFields><TreatWarningsAsErrors type='bool'><![CDATA[0]]></TreatWarningsAsErrors><PreserveTrailingBlanks type='bool'><![CDATA[1]]></PreserveTrailingBlanks><FailOnRowErrorPX type='bool'><![CDATA[1]]></FailOnRowErrorPX></Session><Logging><LogColumnValues collapsed='1' type='bool'><![CDATA[0]]></LogColumnValues></Logging><BeforeAfter collapsed='1' type='bool'><![CDATA[0]]></BeforeAfter><ApplicationFailoverControl collapsed='1' type='bool'><![CDATA[0]]></ApplicationFailoverControl><Reconnect collapsed='1' type='bool'><![CDATA[0]]></Reconnect><Disconnect collapsed='1' type='int'><![CDATA[0]]></Disconnect></Usage></Properties >"
+      END DSSUBRECORD
+      NextRecordID "0"
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "V0S18P1"
+      OLEType "CCustomInput"
+      Readonly "0"
+      Name "DSLink25"
+      Partner "V0S20|V0S20P2"
+      LinkType "1"
+      ConditionNotMet "fail"
+      LookupFail "fail"
+      Properties "CCustomProperty"
+      BEGIN DSSUBRECORD
+         Name "VariantName"
+         Value "10"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "VariantLibrary"
+         Value "ccora10g"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "VariantVersion"
+         Value "1.0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectFromLink"
+         Value "-1"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectThreshold"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectNumber"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectUsesPercentage"
+         Value "false"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "ConnectorName"
+         Value "OracleConnector"
+      END DSSUBRECORD
+      MetaBag "CMetaProperty"
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "RTColumnProp"
+         Value "0"
+      END DSSUBRECORD
+      TransactionSize "0"
+      TXNBehaviour "0"
+      EnableTxGroup "0"
+      LinkMinimised "0"
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "V0S19"
+      OLEType "CTransformerStage"
+      Readonly "0"
+      Name "Transformer_19"
+      NextID "3"
+      InputPins "V0S19P1"
+      OutputPins "V0S19P2"
+      MetaBag "CMetaProperty"
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "TrxGenCode"
+         Value =+=+=+=
+//
+// Generated file to implement the V0S19_J_LOAD_DIM_DIM_FF_TIER_Transformer_19 transform operator.
+//
+
+// define our input/output link names
+inputname 0 DSLink22;
+outputname 0 DSLink24;
+
+initialize {
+	// define our control variables
+	int8 RowRejected0;
+	int8 NullSetVar0;
+
+	// declare our intermediate variables for this section
+	decimal InterVar0_0;
+
+	// initialise constant values which require conversion
+	InterVar0_0 = 0;
+	// Stage variable declaration and initialisation
+	decimal[255,0] StageVar0_vMinMiles;
+	StageVar0_vMinMiles = InterVar0_0;
+	decimal[255,0] StageVar0_vBonusPct;
+	StageVar0_vBonusPct = InterVar0_0;
+}
+
+mainloop {
+
+	// evaluate the stage variables first
+	if (null(DSLink22.MIN_MILES)) {
+		StageVar0_vMinMiles = InterVar0_0;
+	} else {
+		StageVar0_vMinMiles = DSLink22.MIN_MILES;
+	}
+	//;
+	if (null(DSLink22.BONUS_MILES_PCT)) {
+		StageVar0_vBonusPct = InterVar0_0;
+	} else {
+		StageVar0_vBonusPct = DSLink22.BONUS_MILES_PCT;
+	}
+	//;
+
+	// initialise the rejected row variable
+	RowRejected0 = 1;
+
+	// evaluate columns (no constraints) for link: DSLink24
+	DSLink24.MIN_MILES = StageVar0_vMinMiles;
+	DSLink24.BONUS_MILES_PCT = StageVar0_vBonusPct;
+	writerecord 0;
+	RowRejected0 = 0;
+}
+
+finish {
+}
+
+=+=+=+=
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "TrxGenCache"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "TrxClassName"
+         Value "V0S19_J_LOAD_DIM_DIM_FF_TIER_Transformer_19"
+      END DSSUBRECORD
+      ValidationStatus "0"
+      StageType "CTransformerStage"
+      BlockSize "0"
+      SKKeySourceType "file"
+      StageVars "CStageVar"
+      BEGIN DSSUBRECORD
+         Name "vMinMiles"
+         Expression "If IsNull(DSLink22.MIN_MILES) Then 0 Else DSLink22.MIN_MILES"
+         InitialValue "0"
+         SqlType "2"
+         ParsedExpression " If IsNull(DSLink22.MIN_MILES) Then 0 Else DSLink22.MIN_MILES"
+         SourceColumn "DSLink22.MIN_MILES"
+         Precision "255"
+         ColScale "0"
+         ExtendedPrecision "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "vBonusPct"
+         Expression "If IsNull(DSLink22.BONUS_MILES_PCT) Then 0 Else DSLink22.BONUS_MILES_PCT"
+         InitialValue "0"
+         SqlType "2"
+         ParsedExpression " If IsNull(DSLink22.BONUS_MILES_PCT) Then 0 Else DSLink22.BONUS_MILES_PCT"
+         SourceColumn "DSLink22.BONUS_MILES_PCT"
+         Precision "255"
+         ColScale "0"
+         ExtendedPrecision "0"
+      END DSSUBRECORD
+      StageVarsMinimised "0"
+      LoopVarsMaximised "0"
+      MaxLoopIterations "0"
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "V0S19P1"
+      OLEType "CTrxInput"
+      Readonly "0"
+      Name "DSLink22"
+      Partner "V0S17|V0S17P1"
+      LinkType "1"
+      MetaBag "CMetaProperty"
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "RTColumnProp"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "Schema"
+         Value =+=+=+=
+record
+(
+  TIER_ID:nullable int32;
+  TIER_NAME:nullable ustring[max=30];
+  MIN_MILES:nullable decimal[38,10];
+  LOUNGE_ACCESS:nullable ustring[max=1];
+  PRIORITY_BOARDING:nullable ustring[max=1];
+  UPGRADE_ELIGIBLE:nullable ustring[max=1];
+  BONUS_MILES_PCT:nullable decimal[5,2];
+)
+=+=+=+=
+      END DSSUBRECORD
+      MultiRow "0"
+      LinkMinimised "0"
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "V0S19P2"
+      OLEType "CTrxOutput"
+      Readonly "0"
+      Name "DSLink24"
+      Partner "V0S20|V0S20P1"
+      Reject "0"
+      ErrorPin "0"
+      RowLimit "0"
+      Columns "COutputColumn"
+      BEGIN DSSUBRECORD
+         Name "TIER_ID"
+         Description "TIER_ID: nullable decimal[38,10]"
+         SqlType "4"
+         Precision "38"
+         Scale "10"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         Derivation "DSLink22.TIER_ID"
+         Group "0"
+         ParsedDerivation "DSLink22.TIER_ID"
+         SourceColumn "DSLink22.TIER_ID"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\HR_FREQUENT_FLYER_TIERS"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         Usage "COMP-3"
+         PadChar ""
+         ColumnReference "TIER_ID"
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "TIER_NAME"
+         Description "TIER_NAME: nullable string[max=30]"
+         SqlType "12"
+         Precision "30"
+         Scale "0"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         Derivation "DSLink22.TIER_NAME"
+         Group "0"
+         ParsedDerivation "DSLink22.TIER_NAME"
+         SourceColumn "DSLink22.TIER_NAME"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\HR_FREQUENT_FLYER_TIERS"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ColumnReference "TIER_NAME"
+         ExtendedPrecision "1"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "MIN_MILES"
+         Description "MIN_MILES: nullable decimal[38,10]"
+         SqlType "2"
+         Precision "38"
+         Scale "10"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         Derivation "vMinMiles"
+         Group "0"
+         ParsedDerivation "vMinMiles"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\HR_FREQUENT_FLYER_TIERS"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         StageVars "vMinMiles"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         Usage "COMP-3"
+         PadChar ""
+         ColumnReference "MIN_MILES"
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "LOUNGE_ACCESS"
+         Description "LOUNGE_ACCESS: nullable string[max=1]"
+         SqlType "12"
+         Precision "1"
+         Scale "0"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         Derivation "DSLink22.LOUNGE_ACCESS"
+         Group "0"
+         ParsedDerivation "DSLink22.LOUNGE_ACCESS"
+         SourceColumn "DSLink22.LOUNGE_ACCESS"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\HR_FREQUENT_FLYER_TIERS"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ColumnReference "LOUNGE_ACCESS"
+         ExtendedPrecision "1"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "PRIORITY_BOARDING"
+         Description "PRIORITY_BOARDING: nullable string[max=1]"
+         SqlType "12"
+         Precision "1"
+         Scale "0"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         Derivation "DSLink22.PRIORITY_BOARDING"
+         Group "0"
+         ParsedDerivation "DSLink22.PRIORITY_BOARDING"
+         SourceColumn "DSLink22.PRIORITY_BOARDING"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\HR_FREQUENT_FLYER_TIERS"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ColumnReference "PRIORITY_BOARDING"
+         ExtendedPrecision "1"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "UPGRADE_ELIGIBLE"
+         Description "UPGRADE_ELIGIBLE: nullable string[max=1]"
+         SqlType "12"
+         Precision "1"
+         Scale "0"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         Derivation "DSLink22.UPGRADE_ELIGIBLE"
+         Group "0"
+         ParsedDerivation "DSLink22.UPGRADE_ELIGIBLE"
+         SourceColumn "DSLink22.UPGRADE_ELIGIBLE"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\HR_FREQUENT_FLYER_TIERS"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ColumnReference "UPGRADE_ELIGIBLE"
+         ExtendedPrecision "1"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "BONUS_MILES_PCT"
+         Description "BONUS_MILES_PCT: nullable decimal[5,2]"
+         SqlType "2"
+         Precision "5"
+         Scale "2"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         Derivation "vBonusPct"
+         Group "0"
+         ParsedDerivation "vBonusPct"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\HR_FREQUENT_FLYER_TIERS"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         StageVars "vBonusPct"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         Usage "COMP-3"
+         PadChar ""
+         ColumnReference "BONUS_MILES_PCT"
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      MetaBag "CMetaProperty"
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "DiskWriteInc"
+         Value "1048576"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "BufFreeRun"
+         Value "50"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "MaxMemBufSize"
+         Value "3145728"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "QueueUpperSize"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "Schema"
+         Value =+=+=+=
+record
+(
+  TIER_ID:nullable int32;
+  TIER_NAME:nullable ustring[max=30];
+  MIN_MILES:nullable decimal[38,10];
+  LOUNGE_ACCESS:nullable ustring[max=1];
+  PRIORITY_BOARDING:nullable ustring[max=1];
+  UPGRADE_ELIGIBLE:nullable ustring[max=1];
+  BONUS_MILES_PCT:nullable decimal[5,2];
+)
+=+=+=+=
+      END DSSUBRECORD
+      LeftTextPos "539"
+      TopTextPos "138"
+      LinkMinimised "0"
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "V0S20"
+      OLEType "CCustomStage"
+      Readonly "0"
+      Name "Remove_Duplicates_20"
+      NextID "3"
+      InputPins "V0S20P1"
+      OutputPins "V0S20P2"
+      StageType "PxRemDup"
+      AllowColumnMapping "0"
+      Properties "CCustomProperty"
+      BEGIN DSSUBRECORD
+         Name "keep"
+         Value "first"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "key"
+         Value "\(2)\(2)0\(1)\(3)key\(2)TIER_ID\(2)0"
+      END DSSUBRECORD
+      NextRecordID "0"
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "V0S20P1"
+      OLEType "CCustomInput"
+      Readonly "0"
+      Name "DSLink24"
+      Partner "V0S19|V0S19P2"
+      LinkType "1"
+      ConditionNotMet "fail"
+      LookupFail "fail"
+      MetaBag "CMetaProperty"
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "RTColumnProp"
+         Value "0"
+      END DSSUBRECORD
+      TransactionSize "0"
+      TXNBehaviour "0"
+      EnableTxGroup "0"
+      LinkMinimised "0"
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "V0S20P2"
+      OLEType "CCustomOutput"
+      Readonly "0"
+      Name "DSLink25"
+      Partner "V0S18|V0S18P1"
+      Columns "COutputColumn"
+      BEGIN DSSUBRECORD
+         Name "TIER_ID"
+         Description "TIER_ID: decimal[38,10]"
+         SqlType "4"
+         Precision "38"
+         Scale "10"
+         Nullable "0"
+         KeyPosition "1"
+         DisplaySize "0"
+         Derivation "DSLink24.TIER_ID"
+         Group "0"
+         ParsedDerivation "DSLink24.TIER_ID"
+         SourceColumn "DSLink24.TIER_ID"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\DIM_FF_TIER"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         Usage "COMP-3"
+         PadChar ""
+         ColumnReference "TIER_ID"
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "TIER_NAME"
+         Description "TIER_NAME: string[max=30]"
+         SqlType "12"
+         Precision "30"
+         Scale "0"
+         Nullable "0"
+         KeyPosition "0"
+         DisplaySize "0"
+         Derivation "DSLink24.TIER_NAME"
+         Group "0"
+         ParsedDerivation "DSLink24.TIER_NAME"
+         SourceColumn "DSLink24.TIER_NAME"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\DIM_FF_TIER"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ColumnReference "TIER_NAME"
+         ExtendedPrecision "1"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "MIN_MILES"
+         Description "MIN_MILES: nullable decimal[38,10]"
+         SqlType "2"
+         Precision "38"
+         Scale "10"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         Derivation "DSLink24.MIN_MILES"
+         Group "0"
+         ParsedDerivation "DSLink24.MIN_MILES"
+         SourceColumn "DSLink24.MIN_MILES"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\DIM_FF_TIER"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         Usage "COMP-3"
+         PadChar ""
+         ColumnReference "MIN_MILES"
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "LOUNGE_ACCESS"
+         Description "LOUNGE_ACCESS: string[max=1]"
+         SqlType "12"
+         Precision "1"
+         Scale "0"
+         Nullable "0"
+         KeyPosition "0"
+         DisplaySize "0"
+         Derivation "DSLink24.LOUNGE_ACCESS"
+         Group "0"
+         ParsedDerivation "DSLink24.LOUNGE_ACCESS"
+         SourceColumn "DSLink24.LOUNGE_ACCESS"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\DIM_FF_TIER"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ColumnReference "LOUNGE_ACCESS"
+         ExtendedPrecision "1"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "PRIORITY_BOARDING"
+         Description "PRIORITY_BOARDING: string[max=1]"
+         SqlType "12"
+         Precision "1"
+         Scale "0"
+         Nullable "0"
+         KeyPosition "0"
+         DisplaySize "0"
+         Derivation "DSLink24.PRIORITY_BOARDING"
+         Group "0"
+         ParsedDerivation "DSLink24.PRIORITY_BOARDING"
+         SourceColumn "DSLink24.PRIORITY_BOARDING"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\DIM_FF_TIER"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ColumnReference "PRIORITY_BOARDING"
+         ExtendedPrecision "1"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "UPGRADE_ELIGIBLE"
+         Description "UPGRADE_ELIGIBLE: string[max=1]"
+         SqlType "12"
+         Precision "1"
+         Scale "0"
+         Nullable "0"
+         KeyPosition "0"
+         DisplaySize "0"
+         Derivation "DSLink24.UPGRADE_ELIGIBLE"
+         Group "0"
+         ParsedDerivation "DSLink24.UPGRADE_ELIGIBLE"
+         SourceColumn "DSLink24.UPGRADE_ELIGIBLE"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\DIM_FF_TIER"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ColumnReference "UPGRADE_ELIGIBLE"
+         ExtendedPrecision "1"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "BONUS_MILES_PCT"
+         Description "BONUS_MILES_PCT: nullable decimal[5,2]"
+         SqlType "2"
+         Precision "5"
+         Scale "2"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         Derivation "DSLink24.BONUS_MILES_PCT"
+         Group "0"
+         ParsedDerivation "DSLink24.BONUS_MILES_PCT"
+         SourceColumn "DSLink24.BONUS_MILES_PCT"
+         SortKey "0"
+         SortType "0"
+         TableDef "Oracle\\XE\\DIM_FF_TIER"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         Usage "COMP-3"
+         PadChar ""
+         ColumnReference "BONUS_MILES_PCT"
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      MetaBag "CMetaProperty"
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "DiskWriteInc"
+         Value "1048576"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "BufFreeRun"
+         Value "50"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "MaxMemBufSize"
+         Value "3145728"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "QueueUpperSize"
+         Value "0"
+      END DSSUBRECORD
+      LeftTextPos "745"
+      TopTextPos "115"
+      LinkMinimised "0"
+   END DSRECORD
+END DSJOB
+BEGIN DSSTAGETYPES
+END DSSTAGETYPES
+BEGIN DSTABLEDEFS
+   BEGIN DSRECORD
+      Identifier "Oracle\\XE\\DIM_FF_TIER"
+      DateModified "2026-06-25"
+      TimeModified "00.22.23"
+      OLEType "CMetaTable"
+      Readonly "0"
+      Category "\\Table Definitions\\Oracle\\XE"
+      ShortDesc "Imported from: DIM_FF_TIER"
+      Description =+=+=+=
+Orchestrate Schema Importer - on 2026-06-25 at 00:22:21
+DBMS type: Oracle, Database server: XE
+=+=+=+=
+      Version "9"
+      Multivalued "0"
+      Columns "CMetaColumn"
+      BEGIN DSSUBRECORD
+         Name "TIER_ID"
+         Description "TIER_ID: decimal[38,10]"
+         SqlType "3"
+         Precision "38"
+         Scale "10"
+         Nullable "0"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         Usage "COMP-3"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "TIER_NAME"
+         Description "TIER_NAME: string[max=30]"
+         SqlType "12"
+         Precision "30"
+         Scale "0"
+         Nullable "0"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "MIN_MILES"
+         Description "MIN_MILES: nullable decimal[38,10]"
+         SqlType "3"
+         Precision "38"
+         Scale "10"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         Usage "COMP-3"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "LOUNGE_ACCESS"
+         Description "LOUNGE_ACCESS: string[max=1]"
+         SqlType "12"
+         Precision "1"
+         Scale "0"
+         Nullable "0"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "PRIORITY_BOARDING"
+         Description "PRIORITY_BOARDING: string[max=1]"
+         SqlType "12"
+         Precision "1"
+         Scale "0"
+         Nullable "0"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "UPGRADE_ELIGIBLE"
+         Description "UPGRADE_ELIGIBLE: string[max=1]"
+         SqlType "12"
+         Precision "1"
+         Scale "0"
+         Nullable "0"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "BONUS_MILES_PCT"
+         Description "BONUS_MILES_PCT: nullable decimal[5,2]"
+         SqlType "3"
+         Precision "5"
+         Scale "2"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         Usage "COMP-3"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      SEQ-Delimiter ","
+      SEQ-QuoteChar "\""
+      SEQ-ColHeaders "0"
+      SEQ-FixedWidth "0"
+      SEQ-ColSpace "0"
+      SEQ-OmitNewLine "0"
+      AllowColumnMapping "0"
+      Locator "TableType=\"orchdbutil\"|computer=\"XE\"|SoftwareProduct=\"Oracle\"|DataStore(Database)=\"XE\"|DataSchema(Schema)=\"HR\"|DataCollection(Table)=\"DIM_FF_TIER\""
+      PadChar ""
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "Oracle\\XE\\HR_FREQUENT_FLYER_TIERS"
+      DateModified "2026-06-25"
+      TimeModified "00.20.17"
+      OLEType "CMetaTable"
+      Readonly "0"
+      Category "\\Table Definitions\\Oracle\\XE"
+      ShortDesc "Imported from: HR.FREQUENT_FLYER_TIERS"
+      Description =+=+=+=
+Orchestrate Schema Importer - on 2026-06-25 at 00:20:15
+DBMS type: Oracle, Database server: XE
+=+=+=+=
+      Version "9"
+      Multivalued "0"
+      Columns "CMetaColumn"
+      BEGIN DSSUBRECORD
+         Name "TIER_ID"
+         Description "TIER_ID: nullable decimal[38,10]"
+         SqlType "3"
+         Precision "38"
+         Scale "10"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         Usage "COMP-3"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "TIER_NAME"
+         Description "TIER_NAME: nullable string[max=30]"
+         SqlType "12"
+         Precision "30"
+         Scale "0"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "MIN_MILES"
+         Description "MIN_MILES: nullable decimal[38,10]"
+         SqlType "3"
+         Precision "38"
+         Scale "10"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         Usage "COMP-3"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "LOUNGE_ACCESS"
+         Description "LOUNGE_ACCESS: nullable string[max=1]"
+         SqlType "12"
+         Precision "1"
+         Scale "0"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "PRIORITY_BOARDING"
+         Description "PRIORITY_BOARDING: nullable string[max=1]"
+         SqlType "12"
+         Precision "1"
+         Scale "0"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "UPGRADE_ELIGIBLE"
+         Description "UPGRADE_ELIGIBLE: nullable string[max=1]"
+         SqlType "12"
+         Precision "1"
+         Scale "0"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "BONUS_MILES_PCT"
+         Description "BONUS_MILES_PCT: nullable decimal[5,2]"
+         SqlType "3"
+         Precision "5"
+         Scale "2"
+         Nullable "1"
+         KeyPosition "0"
+         DisplaySize "0"
+         LevelNo "0"
+         Occurs "0"
+         SignOption "0"
+         SCDPurpose "0"
+         SyncIndicator "0"
+         Usage "COMP-3"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+      END DSSUBRECORD
+      SEQ-Delimiter ","
+      SEQ-QuoteChar "\""
+      SEQ-ColHeaders "0"
+      SEQ-FixedWidth "0"
+      SEQ-ColSpace "0"
+      SEQ-OmitNewLine "0"
+      AllowColumnMapping "0"
+      Locator "TableType=\"orchdbutil\"|computer=\"XE\"|SoftwareProduct=\"Oracle\"|DataStore(Database)=\"XE\"|DataSchema(Schema)=\"HR\"|DataCollection(Table)=\"HR_FREQUENT_FLYER_TIERS\""
+      PadChar ""
+   END DSRECORD
+END DSTABLEDEFS
+BEGIN DSPARAMETERSETS
+   BEGIN DSRECORD
+      Identifier "Airline_Auth"
+      DateModified "2026-06-23"
+      TimeModified "23.16.57"
+      OLEType "CParameterSet"
+      Readonly "0"
+      Category "\\Jobs\\Airline_Analystics"
+      Parameters "CParameters"
+      BEGIN DSSUBRECORD
+         Name "SERVER"
+         Prompt "SERVER"
+         Default "XE"
+         ParamType "0"
+         ParamLength "0"
+         ParamScale "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "PASS"
+         Prompt "PASS"
+         Default "{iisenc}R9Z+PqrqrQ5nBB4PRrSOEg=="
+         ParamType "1"
+         ParamLength "0"
+         ParamScale "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "USER"
+         Prompt "USER"
+         Default "HR"
+         ParamType "0"
+         ParamLength "0"
+         ParamScale "0"
+      END DSSUBRECORD
+   END DSRECORD
+END DSPARAMETERSETS
